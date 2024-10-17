@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5ai05pkvvicr"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_3wyt2"]
+[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_xmff2"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_41whi"]
+[ext_resource type="Texture2D" uid="uid://ckgr3wu2x3psi" path="res://Sprites/ui/test_button/test_button1.png" id="4_02p5c"]
+[ext_resource type="Texture2D" uid="uid://f5nm3ska7f4y" path="res://Sprites/ui/test_button/test_button2.png" id="5_d27u7"]
+[ext_resource type="AudioStream" uid="uid://dlxv33ub7dg43" path="res://Sounds/bell_ding.ogg" id="6_vj7c7"]
+[ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="7_mc0ox"]
+[ext_resource type="Texture2D" uid="uid://bdp87wyiojxek" path="res://Sprites/ui/slider_arrow2.png" id="8_axreg"]
+[ext_resource type="Texture2D" uid="uid://bb21jnyckvc4t" path="res://Sprites/ui/slider.png" id="9_5fq1h"]
+[ext_resource type="Texture2D" uid="uid://dsgvm4eawtxu2" path="res://Sprites/ui/slider_content.png" id="10_tdudw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7ele"]
+texture = ExtResource("9_5fq1h")
+region_rect = Rect2(0, 0, 32, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x44c2"]
+texture = ExtResource("10_tdudw")
+expand_margin_right = 8.0
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_3wyt2")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xmff2")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_41whi")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Main/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Zombie Bash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Play"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("7_mc0ox")
+theme_override_icons/grabber_highlight = ExtResource("8_axreg")
+theme_override_styles/slider = SubResource("StyleBoxTexture_w7ele")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_x44c2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_x44c2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture_normal = ExtResource("4_02p5c")
+texture_pressed = ExtResource("4_02p5c")
+texture_hover = ExtResource("5_d27u7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TextureButton"]
+stream = ExtResource("6_vj7c7")
+
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
