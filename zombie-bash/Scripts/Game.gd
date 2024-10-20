@@ -151,23 +151,23 @@ func _spawn_notes(to_spawn):
 		
 
 # will increment score based on performance
-func increment_score(by):
-	if by > 0:
+func increment_score(scoreIncrementValue):
+	if scoreIncrementValue > 0:
 		combo += 1
 	else:
 		combo = 0
 	
-	if by == 3:
+	if scoreIncrementValue == 3:
 		great += 1
-	elif by == 2:
+	elif scoreIncrementValue == 2:
 		good += 1
-	elif by == 1:
+	elif scoreIncrementValue == 1:
 		okay += 1
 	else:
 		missed += 1
 	
 	
-	score += by * combo
+	score += scoreIncrementValue * combo
 	$Label.text = str(score)
 	if combo > 0:
 		$Combo.text = str(combo) + " combo!"
