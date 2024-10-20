@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bewjds73tyt4n"]
 
-[ext_resource type="Script" path="res://Scenes/settings.gd" id="1_7a7su"]
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_7a7su"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_uymrb"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="2_15k84"]
 [ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="3_qav1c"]
@@ -61,6 +61,15 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 45
 text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeTitle" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "Main Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
