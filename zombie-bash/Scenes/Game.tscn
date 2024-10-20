@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
-[ext_resource type="AudioStream" uid="uid://oj6e20yqp4ft" path="res://Sounds/song.ogg" id="8_4ukbx"]
+[ext_resource type="AudioStream" uid="uid://d2465utrpnmbc" path="res://Sounds/song.ogg" id="8_4ukbx"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
 
 [node name="Game" type="Node2D"]
@@ -27,7 +27,7 @@ position = Vector2(120, 164)
 sprite_frames = ExtResource("2")
 input = "left"
 
-[node name="ArrowButton" parent="." instance=ExtResource("1")]
+[node name="ArrowRight" parent="." instance=ExtResource("1")]
 position = Vector2(200, 164)
 sprite_frames = ExtResource("3")
 input = "right"
