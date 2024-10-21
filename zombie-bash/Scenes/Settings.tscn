@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://bewjds73tyt4n"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_7a7su"]
+[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_uymrb"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="2_15k84"]
+[ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="3_qav1c"]
+[ext_resource type="Texture2D" uid="uid://bdp87wyiojxek" path="res://Sprites/ui/slider_arrow2.png" id="4_daohi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcr3b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uabqi"]
+
+[node name="Settings" type="Node"]
+script = ExtResource("1_7a7su")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uymrb")
+expand_mode = 1
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_15k84")
+
+[node name="CenterContainer" type="CenterContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeTitle" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "Main Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("3_qav1c")
+theme_override_icons/grabber_highlight = ExtResource("4_daohi")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_lcr3b")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_uabqi")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[connection signal="value_changed" from="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
