@@ -1,6 +1,8 @@
 # Team-Zombie-Bash
 3D Godot Game
 
+Link to game: https://robrob7.github.io/Team-Zombie-Bash/WebGame/index.html
+
 Project Name: Zombie Bash
 
 Team Members:
