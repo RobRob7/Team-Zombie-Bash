@@ -1,8 +1,12 @@
 extends Node2D
 
+# signal: reports song position in beats on every beat
 signal beat(position)
+
+# signal: reports measure of song on every beat
 signal measure(position)
 
+# stats tracked during game
 var score = 0
 var combo = 0
 var great = 0
@@ -11,9 +15,12 @@ var okay = 0
 var missed = 0
 var grade = "NA"
 
-
+# will set the score for end screen stats
 func set_score(new):
+	# update latest score
 	score = new
+
+	# set grade depending on score
 	if score > 250000:
 		grade = "A+"
 	elif score > 200000:
