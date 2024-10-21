@@ -1,17 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bewjds73tyt4n"]
+[gd_scene load_steps=4 format=3 uid="uid://dln53gadd1p7b"]
 
-[ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_7a7su"]
-[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_uymrb"]
-[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="2_15k84"]
-[ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="3_qav1c"]
-[ext_resource type="Texture2D" uid="uid://bdp87wyiojxek" path="res://Sprites/ui/slider_arrow2.png" id="4_daohi"]
+[ext_resource type="Script" path="res://Scripts/Credits.gd" id="1_l86v0"]
+[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="2_34iyg"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_iqes5"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lcr3b"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uabqi"]
-
-[node name="Settings" type="Node"]
-script = ExtResource("1_7a7su")
+[node name="Credits" type="Node"]
+script = ExtResource("1_l86v0")
 
 [node name="Background" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -19,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_uymrb")
+texture = ExtResource("2_34iyg")
 expand_mode = 1
 
 [node name="Main" type="Control" parent="."]
@@ -29,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_15k84")
+theme = ExtResource("3_iqes5")
 
 [node name="CenterContainer" type="CenterContainer" parent="Main"]
 layout_mode = 1
@@ -60,7 +54,7 @@ modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 45
-text = "Settings"
+text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,19 +63,12 @@ modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 22
-text = "Main Volume"
+text = "Song: Wubbaduck - Rush [NCS Release]
+Music provided by NoCopyrightSounds
+Free Download/Stream: http://ncs.io/RushFreeDL
+Watch: http://youtu.be/vfN4AlCFlgw"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_icons/grabber = ExtResource("3_qav1c")
-theme_override_icons/grabber_highlight = ExtResource("4_daohi")
-theme_override_styles/grabber_area = SubResource("StyleBoxTexture_lcr3b")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_uabqi")
-max_value = 1.0
-step = 0.05
-value = 1.0
 
 [node name="BackButton" type="Button" parent="Main"]
 layout_mode = 0
@@ -91,5 +78,4 @@ offset_right = 89.0
 offset_bottom = 77.0
 text = "BACK"
 
-[connection signal="value_changed" from="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Main/BackButton" to="." method="_on_back_button_pressed"]
