@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
-[ext_resource type="AudioStream" uid="uid://cathagnxrkphl" path="res://Sounds/Wubbaduck - Rush [NCS Release].mp3" id="8_prr3f"]
+[ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/Wubbaduck - Rush [NCS Release].mp3" id="8_prr3f"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
 
 [node name="Game" type="Node2D"]
