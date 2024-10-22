@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bewjds73tyt4n"]
 
-[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_7a7su"]
+[ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_7a7su"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_uymrb"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="2_15k84"]
 [ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="3_qav1c"]
@@ -83,4 +83,13 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
+[node name="BackButton" type="Button" parent="Main"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 89.0
+offset_bottom = 77.0
+text = "BACK"
+
 [connection signal="value_changed" from="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Main/BackButton" to="." method="_on_back_button_pressed"]

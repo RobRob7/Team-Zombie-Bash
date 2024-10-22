@@ -1,25 +1,36 @@
 extends Area2D
 
+# y position of arrow buttons on lane (the ones that are static)
 const TARGET_Y = 164
+
+# y position where note is spawned
 const SPAWN_Y = -16
+
+# distance from spawned note to static arrow button
 const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
 
+# (x,y) spawn positions for each note
 const LEFT_LANE_SPAWN = Vector2(120, SPAWN_Y)
 const CENTRE_LANE_SPAWN = Vector2(160, SPAWN_Y)
 const RIGHT_LANE_SPAWN = Vector2(200, SPAWN_Y)
 
+# speed of note
 var speed = 0
+
+# note hit state
 var hit = false
 
-# ran once node enters scene
+
+# ran only once, when node enters scene
 func _ready():
 	pass
 
+
 # ran every frame
 func _physics_process(delta):
-	
 	# if note not hit
 	if !hit:
+		# moving note y position further down
 		position.y += speed * delta
 		
 		# if note exceeds y position
@@ -32,7 +43,9 @@ func _physics_process(delta):
 			get_parent().reset_combo()
 	# if note hit
 	else:
+		# moving note further up
 		$Node2D.position.y -= speed * delta
+
 
 # initialize a lane
 func initialize(lane):
@@ -53,13 +66,19 @@ func initialize(lane):
 		printerr("Invalid lane set for note: " + str(lane))
 		return
 	
-	# speed of note
+	# speed of note to reach target (in 2 seconds)
 	speed = DIST_TO_TARGET / 2.0
+
 
 # called when note is to be destroyed
 func destroy(score):
+	# emit particles around note
 	$CPUParticles2D.emitting = true
+
+	# hide note sprite
 	$AnimatedSprite2D.visible = false
+
+	# start timer
 	$Timer.start()
 	
 	# note is hit
@@ -80,4 +99,5 @@ func destroy(score):
 
 # on timer timeout for feedback labels, free resources
 func _on_Timer_timeout():
+	# free note node
 	queue_free()
