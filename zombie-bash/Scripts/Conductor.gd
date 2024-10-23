@@ -33,6 +33,9 @@ var measure = 1
 func _ready():
 	# calculate seconds per beat
 	sec_per_beat = 60.0 / bpm
+	self.stream = load(Global.currentSong)
+	setSongLength()
+	
 
 # called each frame
 func _physics_process(_delta):
@@ -49,6 +52,9 @@ func _physics_process(_delta):
 		
 		# report the beat
 		_report_beat()
+		
+func setSongLength():
+	Global.songLengthSeconds = self.stream.get_length()
 
 # reports beat
 func _report_beat():
@@ -80,6 +86,7 @@ func play_with_beat_offset(num):
 
 	# start timer
 	$StartTimer.start()
+	
 
 # plays song from desired beat (can be used to start game from further point in song)
 func play_from_beat(beat, offset):
