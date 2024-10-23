@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3pet4v6sysex"]
+[gd_scene load_steps=6 format=3 uid="uid://c3pet4v6sysex"]
 
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
-[ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
 [ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/Wubbaduck - Rush [NCS Release].mp3" id="8_prr3f"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
@@ -12,33 +11,6 @@ script = ExtResource("6")
 bpm = 105
 
 [node name="LaneSystem" parent="." instance=ExtResource("6_qekfp")]
-position = Vector2(-1, 62)
-
-[node name="Label" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 44.0
-offset_bottom = 18.0
-theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7")
-text = "0"
-
-[node name="Combo" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 20.0
-offset_right = 96.0
-offset_bottom = 34.0
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
-theme_override_fonts/font = ExtResource("7")
-horizontal_alignment = 1
-
-[node name="PauseLabel" type="Label" parent="."]
-offset_left = 72.0
-offset_top = 48.0
-offset_right = 250.0
-offset_bottom = 112.0
-theme_override_font_sizes/font_size = 46
-text = "PAUSED"
 
 [node name="Conductor" parent="." instance=ExtResource("8")]
 stream = ExtResource("8_prr3f")
@@ -46,17 +18,16 @@ volume_db = -15.0
 bpm = 105
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(161, 109)
 
 [node name="Background" type="TextureRect" parent="Camera2D"]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -721.0
-offset_top = -477.0
-offset_right = 879.0
-offset_bottom = 723.0
+offset_left = -740.0
+offset_top = -511.0
+offset_right = 860.0
+offset_bottom = 689.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_uknlr")
