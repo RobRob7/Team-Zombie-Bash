@@ -15,28 +15,33 @@ var current_note = null
 # variable input export var
 @export var input = ""
 
+# only ran once when node enters scene
+func _ready() -> void:
+	pass
+	
+
 # handles input on key presses
 func _unhandled_input(event):
 	# if one of keys pressed (a, w, d or left, up, right)
 	if event.is_action(input):
 		# if one of keys pressed (a, w, d or left, up, right)
-		if event.is_action_pressed(input, false):
+		if event.is_action_pressed(input, true):
 			# if the current note is perfect, good, okay
 			if current_note != null:
 				# if perfect note
 				if perfect:
 					# increment score by 3
-					get_parent().increment_score(3)
+					get_parent().get_parent().increment_score(3)
 					# destroy the note
 					current_note.destroy(3)
 				elif good:
 					# increment score by 2
-					get_parent().increment_score(2)
+					get_parent().get_parent().increment_score(2)
 					# destroy the note
 					current_note.destroy(2)
 				elif okay:
 					# increment score by 1
-					get_parent().increment_score(1)
+					get_parent().get_parent().increment_score(1)
 					# destroy the note
 					current_note.destroy(1)
 
@@ -45,7 +50,8 @@ func _unhandled_input(event):
 			# if current note is null
 			else:
 				# increment score by 0
-				get_parent().increment_score(0)
+				get_parent().get_parent().increment_score(0)
+				_reset()
 
 		# if one of keys pressed (a, w, d or left, up, right)
 		if event.is_action_pressed(input):

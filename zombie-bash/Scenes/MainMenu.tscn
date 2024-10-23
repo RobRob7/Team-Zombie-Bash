@@ -68,6 +68,10 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Play"
 
+[node name="HowToPlayButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "How To Play"
+
 [node name="SettingsButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -94,6 +98,7 @@ texture_hover = ExtResource("5_d27u7")
 stream = ExtResource("6_vj7c7")
 
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -25,9 +25,6 @@ var beats_before_start = 0
 # holds current measure
 var measure = 1
 
-# Determining how close to the beat an event is
-#var closest = 0
-#var time_off_beat = 0.0
 
 # called when node enters scene
 func _ready():

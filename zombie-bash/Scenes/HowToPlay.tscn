@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://wy3pmo8w0x52"]
+
+[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_luuaw"]
+[ext_resource type="Script" path="res://Scripts/HowToPlay.gd" id="1_sqvbv"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_if3ts"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_if3ts")
+script = ExtResource("1_sqvbv")
+
+[node name="Background" type="TextureRect" parent="."]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -740.0
+offset_top = -511.0
+offset_right = 860.0
+offset_bottom = 689.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_luuaw")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="InstructionsHeader" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "Zombies stand in your way!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "- Utilize the keys A, W, D to move between lanes (left, middle, and right) and strike down each zombie as they get close to your vehicle
+- Alternative keys are left, up, and right arrow keys"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="."]
+z_index = 1
+z_as_relative = false
+offset_left = 33.0
+offset_top = 30.0
+offset_right = 89.0
+offset_bottom = 77.0
+text = "BACK"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

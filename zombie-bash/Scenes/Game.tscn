@@ -1,81 +1,40 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3pet4v6sysex"]
+[gd_scene load_steps=8 format=3 uid="uid://c3pet4v6sysex"]
 
-[ext_resource type="PackedScene" uid="uid://bt8m3svyu0qqw" path="res://Scenes/ArrowButton.tscn" id="1"]
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="2"]
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://bexmha5sx4tuh" path="res://Sprites/game/road/road.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://cbcl6fttxmr3w" path="res://Scenes/Camera.tscn" id="2_x3mgr"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_lkj6a"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
-[ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
+[ext_resource type="AudioStream" uid="uid://bwc7rg8h2th0s" path="res://Sounds/RIOT - Pushing On [NCS Release].mp3" id="6_h6wq7"]
+[ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
-[ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/Wubbaduck - Rush [NCS Release].mp3" id="8_prr3f"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("6")
-bpm = 105
+bpm = 149
 
-[node name="road" type="Sprite2D" parent="."]
-position = Vector2(100, 0)
-texture = ExtResource("4")
-centered = false
+[node name="Camera" parent="." instance=ExtResource("2_x3mgr")]
+theme = ExtResource("3_lkj6a")
 
-[node name="ArrowUp" parent="." instance=ExtResource("1")]
-position = Vector2(160, 164)
-input = "up"
-
-[node name="ArrowLeft" parent="." instance=ExtResource("1")]
-position = Vector2(120, 164)
-sprite_frames = ExtResource("2")
-input = "left"
-
-[node name="ArrowRight" parent="." instance=ExtResource("1")]
-position = Vector2(200, 164)
-sprite_frames = ExtResource("3")
-input = "right"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 44.0
-offset_bottom = 18.0
-theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
-theme_override_fonts/font = ExtResource("7")
-text = "0"
-
-[node name="Combo" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 20.0
-offset_right = 96.0
-offset_bottom = 34.0
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
-theme_override_fonts/font = ExtResource("7")
-horizontal_alignment = 1
-
-[node name="PauseLabel" type="Label" parent="."]
-offset_left = 72.0
-offset_top = 48.0
-offset_right = 250.0
-offset_bottom = 112.0
-theme_override_font_sizes/font_size = 46
-text = "PAUSED"
+[node name="LaneSystem" parent="." instance=ExtResource("6_qekfp")]
 
 [node name="Conductor" parent="." instance=ExtResource("8")]
-stream = ExtResource("8_prr3f")
+stream = ExtResource("6_h6wq7")
 volume_db = -15.0
-bpm = 105
+bpm = 149
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(161, 109)
+visible = false
 
 [node name="Background" type="TextureRect" parent="Camera2D"]
+visible = false
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -721.0
-offset_top = -477.0
-offset_right = 879.0
-offset_bottom = 723.0
+offset_left = -740.0
+offset_top = -511.0
+offset_right = 860.0
+offset_bottom = 689.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_uknlr")

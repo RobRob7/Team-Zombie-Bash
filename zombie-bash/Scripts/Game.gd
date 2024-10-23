@@ -42,17 +42,29 @@ var lane = 0
 # random number
 var rand = 0
 
-# note
+# note scene
 var note = load("res://Scenes/Note.tscn")
 
-# instance of note
+# note scene instance
 var instance
 
 
 # ran only once, when node enters scene
 func _ready():
-	# hide paused screen
-	$PauseLabel.visible = false
+	# Y osition of player vehicle
+	Global.TARGET_Y = $LaneSystem/ArrowLeft.global_position.y
+	
+	# Y position of note/zombie spawn
+	Global.SPAWN_Y = $LaneSystem.global_position.y
+	
+	# X position of left lane note/zombie spawn
+	Global.SPAWN_X[0] = $LaneSystem/ArrowLeft.global_position.x
+	
+	# X position of middle lane note/zombie spawn
+	Global.SPAWN_X[1] = $LaneSystem/ArrowUp.global_position.x
+	
+	# X position of right lane note/zombie spawn
+	Global.SPAWN_X[2] = $LaneSystem/ArrowRight.global_position.x
 	
 	# random seed set
 	randomize()
@@ -299,21 +311,24 @@ func increment_score(scoreIncrementValue):
 	score += scoreIncrementValue * combo
 
 	# update score display
-	$Label.text = str(score)
+	$LaneSystem/Score.text = str(score)
 
 	# if combo > 0
 	if combo > 0:
 		# update combo text
-		$Combo.text = str(combo) + " combo!"
+		$LaneSystem/Combo.text = str(combo) + " combo!"
 
 		# if combo exceeds previous max combo
 		if combo > max_combo:
 			# set new max combo
 			max_combo = combo
+		
+		# emit combo change signal
+		Global.combo_changed.emit(combo)
 	# if combo <= 0
 	else:
 		# update combo text (none)
-		$Combo.text = ""
+		$LaneSystem/Combo.text = ""
 
 
 # will reset combo count
@@ -322,4 +337,4 @@ func reset_combo():
 	combo = 0
 
 	# update combo text (none)
-	$Combo.text = ""
+	$LaneSystem/Combo.text = ""
