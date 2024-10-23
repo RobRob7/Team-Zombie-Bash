@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds7o8phasgne3"]
+
+[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_tlip2"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="2_gw4jl"]
+[ext_resource type="Script" path="res://back_button.gd" id="3_8bndm"]
+[ext_resource type="Script" path="res://Scenes/text_field.gd" id="4_6wjj2"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ha8lx"]
+
+[node name="songselectmenu" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tlip2")
+expand_mode = 1
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_gw4jl")
+
+[node name="StartButton" type="Button" parent="Main"]
+offset_left = 335.0
+offset_top = 342.0
+offset_right = 815.0
+offset_bottom = 389.0
+text = "Start Game"
+script = ExtResource("3_8bndm")
+
+[node name="Title" type="Label" parent="Main"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 334.0
+offset_top = 208.0
+offset_right = 814.0
+offset_bottom = 276.0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Songs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextField" type="TextEdit" parent="."]
+material = SubResource("CanvasItemMaterial_ha8lx")
+offset_left = 345.0
+offset_top = 281.0
+offset_right = 817.0
+offset_bottom = 317.0
+placeholder_text = "SONG NAME"
+script = ExtResource("4_6wjj2")
+
+[connection signal="pressed" from="Main/StartButton" to="Main/StartButton" method="_on_pressed_play"]
+[connection signal="text_changed" from="TextField" to="TextField" method="_on_text_changed"]

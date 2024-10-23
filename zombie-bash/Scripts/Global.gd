@@ -14,6 +14,8 @@ var good = 0
 var okay = 0
 var missed = 0
 var grade = "NA"
+var currentSong = "res://Sounds/song.ogg"
+var songLengthSeconds = 0
 
 # will contain main volume value
 var main_volume_value = 1.0
