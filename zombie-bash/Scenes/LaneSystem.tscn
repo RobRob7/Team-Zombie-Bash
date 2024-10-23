@@ -11,20 +11,24 @@ position = Vector2(-320, -185)
 scale = Vector2(2, 2)
 
 [node name="road" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
 position = Vector2(100, 0)
 texture = ExtResource("1_7kyf8")
 centered = false
 
 [node name="ArrowUp" parent="." instance=ExtResource("2_l1tnj")]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(160, 164)
 input = "up"
 
 [node name="ArrowLeft" parent="." instance=ExtResource("2_l1tnj")]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(120, 164)
 sprite_frames = ExtResource("3_6i51u")
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource("2_l1tnj")]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(200, 164)
 sprite_frames = ExtResource("4_bn1tn")
 input = "right"

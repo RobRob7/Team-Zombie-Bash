@@ -322,6 +322,9 @@ func increment_score(scoreIncrementValue):
 		if combo > max_combo:
 			# set new max combo
 			max_combo = combo
+		
+		# emit combo change signal
+		Global.combo_changed.emit(combo)
 	# if combo <= 0
 	else:
 		# update combo text (none)

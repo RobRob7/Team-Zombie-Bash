@@ -6,6 +6,9 @@ signal beat(position)
 # signal: reports measure of song on every beat
 signal measure(position)
 
+# signal: reports the new combo
+signal combo_changed(new_combo)
+
 # stats tracked during game
 var score = 0
 var combo = 0
