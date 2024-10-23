@@ -1,10 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3pet4v6sysex"]
+[gd_scene load_steps=7 format=3 uid="uid://c3pet4v6sysex"]
 
-[ext_resource type="PackedScene" uid="uid://bt8m3svyu0qqw" path="res://Scenes/ArrowButton.tscn" id="1"]
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="2"]
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://bexmha5sx4tuh" path="res://Sprites/game/road/road.png" id="4"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
 [ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/Wubbaduck - Rush [NCS Release].mp3" id="8_prr3f"]
@@ -14,24 +11,8 @@
 script = ExtResource("6")
 bpm = 105
 
-[node name="road" type="Sprite2D" parent="."]
-position = Vector2(100, 0)
-texture = ExtResource("4")
-centered = false
-
-[node name="ArrowUp" parent="." instance=ExtResource("1")]
-position = Vector2(160, 164)
-input = "up"
-
-[node name="ArrowLeft" parent="." instance=ExtResource("1")]
-position = Vector2(120, 164)
-sprite_frames = ExtResource("2")
-input = "left"
-
-[node name="ArrowRight" parent="." instance=ExtResource("1")]
-position = Vector2(200, 164)
-sprite_frames = ExtResource("3")
-input = "right"
+[node name="LaneSystem" parent="." instance=ExtResource("6_qekfp")]
+position = Vector2(-1, 62)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 4.0

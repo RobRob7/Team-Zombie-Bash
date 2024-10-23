@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf5y1mcbqogw"]
+
+[ext_resource type="Texture2D" uid="uid://bexmha5sx4tuh" path="res://Sprites/game/road/road.png" id="1_7kyf8"]
+[ext_resource type="PackedScene" uid="uid://bt8m3svyu0qqw" path="res://Scenes/ArrowButton.tscn" id="2_l1tnj"]
+[ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="3_6i51u"]
+[ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="4_bn1tn"]
+
+[node name="LaneSystem" type="Node2D"]
+
+[node name="road" type="Sprite2D" parent="."]
+position = Vector2(100, 0)
+texture = ExtResource("1_7kyf8")
+centered = false
+
+[node name="ArrowUp" parent="." instance=ExtResource("2_l1tnj")]
+position = Vector2(160, 164)
+input = "up"
+
+[node name="ArrowLeft" parent="." instance=ExtResource("2_l1tnj")]
+position = Vector2(120, 164)
+sprite_frames = ExtResource("3_6i51u")
+input = "left"
+
+[node name="ArrowRight" parent="." instance=ExtResource("2_l1tnj")]
+position = Vector2(200, 164)
+sprite_frames = ExtResource("4_bn1tn")
+input = "right"

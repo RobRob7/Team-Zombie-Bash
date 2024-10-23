@@ -18,6 +18,15 @@ var grade = "NA"
 # will contain main volume value
 var main_volume_value = 1.0
 
+# y position of arrow buttons on lane (the ones that are static)
+var TARGET_Y = 0.0
+
+# y position where note is spawned
+var SPAWN_Y = 0.0
+
+# x positions for note spawn
+var SPAWN_X = [0.0, 0.0, 0.0]
+
 # will set the score for end screen stats
 func set_score(new):
 	# update latest score

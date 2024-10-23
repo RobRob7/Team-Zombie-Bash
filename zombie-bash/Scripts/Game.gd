@@ -51,6 +51,12 @@ var instance
 
 # ran only once, when node enters scene
 func _ready():
+	Global.TARGET_Y = $LaneSystem/ArrowLeft.global_position.y
+	Global.SPAWN_Y = Global.TARGET_Y - 180.0
+	Global.SPAWN_X[0] = $LaneSystem/ArrowLeft.global_position.x
+	Global.SPAWN_X[1] = $LaneSystem/ArrowUp.global_position.x
+	Global.SPAWN_X[2] = $LaneSystem/ArrowRight.global_position.x
+
 	# hide paused screen
 	$PauseLabel.visible = false
 	
