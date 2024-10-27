@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://by0l42cakh8m1"]
+[gd_scene load_steps=9 format=3 uid="uid://by0l42cakh8m1"]
 
 [ext_resource type="Texture2D" uid="uid://bs61dpjm531vh" path="res://Sprites/ui/play_again_button/play_again1.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://bxkv5gambio6v" path="res://Sprites/ui/back_to_menu_button/back_to_menu2.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dkoavhl614n56" path="res://Sprites/ui/back_to_menu_button/back_to_menu1.png" id="3"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_o8lnd"]
 [ext_resource type="Texture2D" uid="uid://dr3m3pc8if6jr" path="res://Sprites/ui/play_again_button/play_again2.png" id="4"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="5"]
 [ext_resource type="Script" path="res://Scripts/End.gd" id="6"]
@@ -41,6 +42,7 @@ offset_bottom = -132.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_o8lnd")
 
 [node name="CenterContainer" type="CenterContainer" parent="End/CanvasLayer/Control"]
 layout_mode = 0

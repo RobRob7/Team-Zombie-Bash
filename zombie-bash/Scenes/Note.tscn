@@ -32,6 +32,7 @@ spread = 180.0
 gravity = Vector2(0, 0)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="Node2D" type="Node2D" parent="."]

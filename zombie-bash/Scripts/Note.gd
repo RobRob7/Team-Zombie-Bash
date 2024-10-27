@@ -25,10 +25,10 @@ func _physics_process(delta):
 	# if note not hit
 	if !hit:
 		# moving note y position further down
-		position.y += speed * delta
+		global_position.y += speed * delta
 		
 		# if note exceeds y position of player vehicle
-		if position.y > Global.TARGET_Y + 36:
+		if global_position.y > Global.TARGET_Y + 20:
 			
 			# free note resources
 			queue_free()
@@ -46,15 +46,15 @@ func initialize(lane):
 	# if left lane
 	if lane == 0:
 		$AnimatedSprite2D.frame = 0
-		position = LEFT_LANE_SPAWN
+		global_position = LEFT_LANE_SPAWN
 	# if middle lane
 	elif lane == 1:
 		$AnimatedSprite2D.frame = 1
-		position = CENTRE_LANE_SPAWN
+		global_position = CENTRE_LANE_SPAWN
 	# if right lane
 	elif lane == 2:
 		$AnimatedSprite2D.frame = 2
-		position = RIGHT_LANE_SPAWN
+		global_position = RIGHT_LANE_SPAWN
 	# invalid lane
 	else:
 		printerr("Invalid lane set for note: " + str(lane))
@@ -90,6 +90,7 @@ func destroy(score):
 	elif score == 1:
 		$Node2D/Label.text = "OKAY"
 		$Node2D/Label.modulate = Color("997577")
+
 
 # on timer timeout for feedback labels, free resources
 func _on_Timer_timeout():

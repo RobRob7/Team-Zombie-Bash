@@ -16,7 +16,7 @@ var okay = 0
 var missed = 0
 
 # song bpm
-@export var bpm = 115
+#@export var bpm = 115
 
 # song position
 var song_position = 0.0
@@ -28,7 +28,11 @@ var song_position_in_beats = 0
 var last_spawned_beat = 0
 
 # seconds per beat
-var sec_per_beat = 60.0 / bpm
+var sec_per_beat = 60.0 / Global.bpm
+
+# number of beats in song
+var total_song_beats = 0.0
+
 
 # number of notes to spawn per measure (1-4)
 var spawn_1_beat = 0
@@ -51,6 +55,9 @@ var instance
 
 # ran only once, when node enters scene
 func _ready():
+	# set total number of beats in song being played
+	total_song_beats = (Global.songLengthSeconds / 60.0) * Global.bpm
+	
 	# Y osition of player vehicle
 	Global.TARGET_Y = $LaneSystem/ArrowLeft.global_position.y
 	
@@ -73,7 +80,7 @@ func _ready():
 	$Conductor.play_with_beat_offset(8)
 	
 	# play song from certain beat/point in song
-	#$Conductor.play_from_beat(200, 8)
+	#$Conductor.play_from_beat(350, 8)
 	
 	# connect beat signal with _on_Conductor_beat
 	Global.beat.connect(_on_Conductor_beat)
@@ -91,140 +98,73 @@ func _input(event):
 			print ("Error changing scene to MainMenu")
 
 
-# # sets the number of spawn arrow notes for each measure
-# func _on_Conductor_beat(position):
-# 	song_position_in_beats = position
-# 	if song_position_in_beats > 36:
-# 		spawn_1_beat = 1
-# 		spawn_2_beat = 1
-# 		spawn_3_beat = 1
-# 		spawn_4_beat = 1
-# 	if song_position_in_beats > 98:
-# 		spawn_1_beat = 2
-# 		spawn_2_beat = 0
-# 		spawn_3_beat = 1
-# 		spawn_4_beat = 0
-# 	if song_position_in_beats > 132:
-# 		spawn_1_beat = 0
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 0
-# 		spawn_4_beat = 2
-# 	if song_position_in_beats > 162:
-# 		spawn_1_beat = 2
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 1
-# 		spawn_4_beat = 1
-# 	if song_position_in_beats > 194:
-# 		spawn_1_beat = 2
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 1
-# 		spawn_4_beat = 2
-# 	if song_position_in_beats > 228:
-# 		spawn_1_beat = 0
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 1
-# 		spawn_4_beat = 2
-# 	if song_position_in_beats > 258:
-# 		spawn_1_beat = 1
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 1
-# 		spawn_4_beat = 2
-# 	if song_position_in_beats > 288:
-# 		spawn_1_beat = 0
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 0
-# 		spawn_4_beat = 2
-# 	if song_position_in_beats > 322:
-# 		spawn_1_beat = 3
-# 		spawn_2_beat = 2
-# 		spawn_3_beat = 2
-# 		spawn_4_beat = 1
-# 	if song_position_in_beats > 388:
-# 		spawn_1_beat = 1
-# 		spawn_2_beat = 0
-# 		spawn_3_beat = 0
-# 		spawn_4_beat = 0
-# 	if song_position_in_beats > 396:
-# 		spawn_1_beat = 0
-# 		spawn_2_beat = 0
-# 		spawn_3_beat = 0
-# 		spawn_4_beat = 0
-# 	if song_position_in_beats > 404:
-# 		Global.set_score(score)
-# 		Global.combo = max_combo
-# 		Global.great = great
-# 		Global.good = good
-# 		Global.okay = okay
-# 		Global.missed = missed
-# 		if get_tree().change_scene_to_file("res://Scenes/End.tscn") != OK:
-# 			print ("Error changing scene to End")
-
-
-# sets the number of spawn arrow notes for each measure
+# every beat, this is called, to spawn x notes per measure per beat range
 func _on_Conductor_beat(position):
 	song_position_in_beats = position
-	if song_position_in_beats > 36:
+	if song_position_in_beats > total_song_beats / 10.0:
 		spawn_1_beat = 1
 		spawn_2_beat = 1
 		spawn_3_beat = 1
 		spawn_4_beat = 1
-	if song_position_in_beats > 98:
+	if song_position_in_beats > 2 * (total_song_beats / 10.0):
 		spawn_1_beat = 2
 		spawn_2_beat = 0
 		spawn_3_beat = 1
 		spawn_4_beat = 0
-	if song_position_in_beats > 132:
+	if song_position_in_beats > 3 * (total_song_beats / 10.0):
 		spawn_1_beat = 0
 		spawn_2_beat = 2
 		spawn_3_beat = 0
 		spawn_4_beat = 2
-	if song_position_in_beats > 162:
+	if song_position_in_beats > 4 * (total_song_beats / 10.0):
 		spawn_1_beat = 2
 		spawn_2_beat = 2
 		spawn_3_beat = 1
 		spawn_4_beat = 1
-	if song_position_in_beats > 194:
+	if song_position_in_beats > 5 * (total_song_beats / 10.0):
 		spawn_1_beat = 2
 		spawn_2_beat = 2
 		spawn_3_beat = 1
 		spawn_4_beat = 2
-	if song_position_in_beats > 228:
+	if song_position_in_beats > 6 * (total_song_beats / 10.0):
 		spawn_1_beat = 0
 		spawn_2_beat = 2
 		spawn_3_beat = 1
 		spawn_4_beat = 2
-	if song_position_in_beats > 258:
+	if song_position_in_beats > 7 * (total_song_beats / 10.0):
 		spawn_1_beat = 1
 		spawn_2_beat = 2
 		spawn_3_beat = 1
 		spawn_4_beat = 2
-	if song_position_in_beats > 288:
+	if song_position_in_beats > 8 * (total_song_beats / 10.0):
 		spawn_1_beat = 0
 		spawn_2_beat = 2
 		spawn_3_beat = 0
 		spawn_4_beat = 2
-	if song_position_in_beats > 322:
+	if song_position_in_beats > 9 * (total_song_beats / 10.0):
 		spawn_1_beat = 3
 		spawn_2_beat = 2
 		spawn_3_beat = 2
 		spawn_4_beat = 1
-	if song_position_in_beats > 388:
+	if song_position_in_beats > 9.5 * (total_song_beats / 10.0):
 		spawn_1_beat = 1
 		spawn_2_beat = 0
 		spawn_3_beat = 0
 		spawn_4_beat = 0
-	if song_position_in_beats > 396:
+	if song_position_in_beats > total_song_beats - 12:
 		spawn_1_beat = 0
 		spawn_2_beat = 0
 		spawn_3_beat = 0
 		spawn_4_beat = 0
-	if song_position_in_beats > 404:
-		Global.set_score(score)
+	if song_position_in_beats > total_song_beats:
+		Global.set_score_grade(score)
 		Global.combo = max_combo
 		Global.great = great
 		Global.good = good
 		Global.okay = okay
 		Global.missed = missed
+		print(Global.total_notes_spawned)
+		print(Global.highest_score_no_combo)
 		if get_tree().change_scene_to_file("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")
 
@@ -251,6 +191,9 @@ func _on_Conductor_measure(position):
 
 # will spawn notes in lanes
 func _spawn_notes(to_spawn):
+	# keep track of total notes spawned
+	Global.total_notes_spawned += to_spawn
+	
 	# notes to spawn > 0
 	if to_spawn > 0:
 		# random lane (0, 1, 2)
