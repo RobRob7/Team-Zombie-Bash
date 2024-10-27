@@ -9,7 +9,10 @@ var shake_decay = 0.1  # How fast the shake should decay
 var original_position: Vector2
 
 # variable for hard limit shake combo score
-var shake_max_combo = 20
+var shake_max_combo = 50
+
+# variable to tune shake intensity
+var shake_max_tune = 0.05
 
 # called only once, when node enters scene
 func _ready():
@@ -45,12 +48,12 @@ func _process(delta):
 
 # function to trigger the camera shake based on current combo
 func start_camera_shake(combo: float):
-	# if combo is less than 20
+	# if combo is less than shake_max_combo
 	if combo < shake_max_combo:
-		shake_intensity = combo * 0.1
+		shake_intensity = combo * shake_max_tune
 	# if combo > 20, keep max shake_intensity
 	else:
-		shake_intensity = shake_max_combo * 0.1
+		shake_intensity = shake_max_combo * shake_max_tune
 	
-	# shake duration for one second
-	shake_duration = 1.0
+	# shake duration for a couple seconds
+	shake_duration = 2.0

@@ -19,7 +19,7 @@ var missed = 0
 var grade = "NA"
 
 # bpm of song
-@export var bpm = 149
+var bpm = 128
 
 # song length in seconds
 var songLengthSeconds = 0
@@ -45,7 +45,7 @@ func set_score_grade(new):
 	score = new
 	
 	# higher score possible (assuming avg_combo and highest_key_hit_performance)
-	var avg_combo = 15
+	var avg_combo = 45
 	var highest_key_hit_performance = 3
 	var high_score_max = total_notes_spawned * (highest_key_hit_performance + highest_key_hit_performance * avg_combo)
 	
