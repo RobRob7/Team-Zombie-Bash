@@ -19,7 +19,7 @@ var missed = 0
 var grade = "NA"
 
 # bpm of song
-@export var bpm = 115
+@export var bpm = 149
 
 # song length in seconds
 var songLengthSeconds = 0
@@ -44,33 +44,44 @@ func set_score_grade(new):
 	# update latest score
 	score = new
 	
-	# higher score possible
-	var high_score = total_notes_spawned * 125
+	# higher score possible (assuming avg_combo and highest_key_hit_performance)
+	var avg_combo = 15
+	var highest_key_hit_performance = 3
+	var high_score_max = total_notes_spawned * (highest_key_hit_performance + highest_key_hit_performance * avg_combo)
+	
+	# the score ranges for each grade letter
+	var score_ranges = [0.95, 0.90, 0.85, 0.80, 0.75, 0.70, 0.65, 0.60, 0.55, 0.50, 0.45, 0.40]
+	
+	# tuning value to highest score possible
+	var high_score_max_tune = 0.9
+	
+	print(high_score_max)
+	print(high_score_max * high_score_max_tune)
 	
 	# set grade based on score
-	if score > 13*(high_score - (high_score * 1.0/13.0)) / 13:
+	if score > score_ranges[0] * (high_score_max_tune * high_score_max):
 		grade = "A+"
-	elif score > 12*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[1] * (high_score_max_tune * high_score_max):
 		grade = "A"
-	elif score > 11*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[2] * (high_score_max_tune * high_score_max):
 		grade = "A-"
-	elif score > 10*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[3] * (high_score_max_tune * high_score_max):
 		grade = "B+"
-	elif score > 9*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[4] * (high_score_max_tune * high_score_max):
 		grade = "B"
-	elif score > 8*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[5] * (high_score_max_tune * high_score_max):
 		grade = "B-"
-	elif score > 7*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[6] * (high_score_max_tune * high_score_max):
 		grade = "C+"
-	elif score > 6*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[7] * (high_score_max_tune * high_score_max):
 		grade = "C"
-	elif score > 5*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[8] * (high_score_max_tune * high_score_max):
 		grade = "C-"
-	elif score > 4*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[9] * (high_score_max_tune * high_score_max):
 		grade = "D+"
-	elif score > 3*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[10] * (high_score_max_tune * high_score_max):
 		grade = "D"
-	elif score > 2*(high_score - (high_score * 1.0/13.0)) / 13:
+	elif score > score_ranges[11] * (high_score_max_tune * high_score_max):
 		grade = "D-"
 	else:
 		grade = "F"

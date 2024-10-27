@@ -164,7 +164,6 @@ func _on_Conductor_beat(position):
 		Global.okay = okay
 		Global.missed = missed
 		print(Global.total_notes_spawned)
-		print(Global.highest_score_no_combo)
 		if get_tree().change_scene_to_file("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")
 

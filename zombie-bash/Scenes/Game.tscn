@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbcl6fttxmr3w" path="res://Scenes/Camera.tscn" id="2_x3mgr"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_lkj6a"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
-[ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/Wubbaduck - Rush [NCS Release].mp3" id="6_245di"]
+[ext_resource type="AudioStream" uid="uid://bwc7rg8h2th0s" path="res://Sounds/RIOT - Pushing On [NCS Release].mp3" id="6_arvyo"]
 [ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
@@ -17,7 +17,7 @@ theme = ExtResource("3_lkj6a")
 [node name="LaneSystem" parent="." instance=ExtResource("6_qekfp")]
 
 [node name="Conductor" parent="." instance=ExtResource("8")]
-stream = ExtResource("6_245di")
+stream = ExtResource("6_arvyo")
 volume_db = -15.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
