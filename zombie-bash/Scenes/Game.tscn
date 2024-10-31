@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3pet4v6sysex"]
+[gd_scene load_steps=7 format=3 uid="uid://c3pet4v6sysex"]
 
 [ext_resource type="PackedScene" uid="uid://cbcl6fttxmr3w" path="res://Scenes/Camera.tscn" id="2_x3mgr"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_lkj6a"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
-[ext_resource type="AudioStream" uid="uid://bj2ajc72p15bh" path="res://Sounds/Curbi - What You Like [NCS Release].mp3" id="6_8gkiy"]
+[ext_resource type="AudioStream" path="res://Sounds/Curbi - What You Like [NCS Release].mp3" id="6_8gkiy"]
 [ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
-[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("6")
@@ -15,25 +14,8 @@ script = ExtResource("6")
 theme = ExtResource("3_lkj6a")
 
 [node name="LaneSystem" parent="." instance=ExtResource("6_qekfp")]
+position = Vector2(-440, -184)
 
 [node name="Conductor" parent="." instance=ExtResource("8")]
 stream = ExtResource("6_8gkiy")
 volume_db = -15.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-
-[node name="Background" type="TextureRect" parent="Camera2D"]
-visible = false
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -740.0
-offset_top = -511.0
-offset_right = 860.0
-offset_bottom = 689.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_uknlr")
-expand_mode = 1

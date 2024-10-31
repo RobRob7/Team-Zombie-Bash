@@ -55,6 +55,18 @@ var instance
 
 # ran only once, when node enters scene
 func _ready():
+	# debug song info output
+	print("Song: " + str(Global.currentSong))
+	print("BPM: " + str(Global.bpm))
+	print("Song Length: " + str(Global.songLengthSeconds))
+	
+	# set song name and bpm strings
+	$LaneSystem/SongName.text = "Song: " + str(Global.currentSong)
+	$LaneSystem/SongBPM.text = "BPM: " + str(Global.bpm)
+	
+	# reset total notes spawned
+	Global.total_notes_spawned = 0
+	
 	# set total number of beats in song being played
 	total_song_beats = (Global.songLengthSeconds / 60.0) * Global.bpm
 	

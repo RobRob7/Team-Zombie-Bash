@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bggsf8k40qd7c"]
+[gd_scene load_steps=5 format=3 uid="uid://bggsf8k40qd7c"]
 
 [ext_resource type="SpriteFrames" path="res://Frames/note_frames.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://6yqp726ibi2" path="res://Sprites/game/particles/star.png" id="2"]
-[ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="3"]
 [ext_resource type="Script" path="res://Scripts/Note.gd" id="4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -45,7 +44,7 @@ offset_top = -8.0
 offset_right = 20.0
 offset_bottom = 6.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3")
+theme_override_font_sizes/font_size = 7
 horizontal_alignment = 1
 vertical_alignment = 1
 

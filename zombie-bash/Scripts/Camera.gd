@@ -9,10 +9,10 @@ var shake_decay = 0.1  # How fast the shake should decay
 var original_position: Vector2
 
 # variable for hard limit shake combo score
-var shake_max_combo = 50
+var shake_max_combo = 100
 
 # variable to tune shake intensity
-var shake_max_tune = 0.05
+var shake_max_tune = 0.02
 
 # called only once, when node enters scene
 func _ready():

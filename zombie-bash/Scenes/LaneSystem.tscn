@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bt8m3svyu0qqw" path="res://Scenes/ArrowButton.tscn" id="2_l1tnj"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="3_6i51u"]
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="4_bn1tn"]
-[ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="5_jqvvp"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="5_0fnln"]
 
 [node name="LaneSystem" type="Node2D"]
 position = Vector2(-320, -185)
 scale = Vector2(2, 2)
 
 [node name="road" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 1)
+visible = false
 position = Vector2(100, 0)
 texture = ExtResource("1_7kyf8")
 centered = false
@@ -38,15 +38,33 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 44.0
 offset_bottom = 18.0
+theme = ExtResource("5_0fnln")
 theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_jqvvp")
+theme_override_font_sizes/font_size = 15
 text = "0"
 
 [node name="Combo" type="Label" parent="."]
 offset_left = 4.0
-offset_top = 20.0
+offset_top = 32.0
 offset_right = 96.0
-offset_bottom = 34.0
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
-theme_override_fonts/font = ExtResource("5_jqvvp")
+offset_bottom = 48.0
+theme = ExtResource("5_0fnln")
+theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
+
+[node name="SongName" type="Label" parent="."]
+offset_left = 251.5
+offset_right = 291.5
+offset_bottom = 23.0
+theme = ExtResource("5_0fnln")
+theme_override_font_sizes/font_size = 10
+text = "NAME"
+
+[node name="SongBPM" type="Label" parent="."]
+offset_left = 251.5
+offset_top = 23.0
+offset_right = 291.5
+offset_bottom = 46.0
+theme = ExtResource("5_0fnln")
+theme_override_font_sizes/font_size = 10
+text = "BPM"
