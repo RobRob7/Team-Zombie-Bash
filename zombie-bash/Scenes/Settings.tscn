@@ -74,6 +74,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("3_qav1c")
 theme_override_icons/grabber_highlight = ExtResource("4_daohi")
@@ -83,13 +84,9 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="BackButton" type="Button" parent="Main"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 30.0
-offset_right = 89.0
-offset_bottom = 77.0
+[node name="BackButton" type="Button" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "BACK"
 
 [connection signal="value_changed" from="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="pressed" from="Main/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

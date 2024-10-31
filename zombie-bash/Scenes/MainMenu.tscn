@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_41whi"]
 [ext_resource type="Texture2D" uid="uid://ckgr3wu2x3psi" path="res://Sprites/ui/test_button/test_button1.png" id="4_02p5c"]
 [ext_resource type="Texture2D" uid="uid://f5nm3ska7f4y" path="res://Sprites/ui/test_button/test_button2.png" id="5_d27u7"]
-[ext_resource type="AudioStream" uid="uid://cotote87mjomd" path="res://Sounds/bell_ding.ogg" id="6_vj7c7"]
+[ext_resource type="AudioStream" uid="uid://8x83yp5so4ml" path="res://Sounds/Audio/endYAY.mp3" id="6_hpgw4"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_3wyt2")
@@ -95,7 +95,8 @@ texture_pressed = ExtResource("4_02p5c")
 texture_hover = ExtResource("5_d27u7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TextureButton"]
-stream = ExtResource("6_vj7c7")
+stream = ExtResource("6_hpgw4")
+volume_db = -15.0
 
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]

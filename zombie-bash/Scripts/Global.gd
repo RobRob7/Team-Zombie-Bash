@@ -18,8 +18,18 @@ var okay = 0
 var missed = 0
 var grade = "NA"
 
+# song dictionary (name to bpm)
+var song_list = {
+	"Curbi - What You Like [NCS Release].mp3" : 128,
+	"RIOT - Pushing On [NCS Release].mp3" : 149,
+	"Sippy, RIOT - Pump Up The Bassline [NCS Release].mp3" : 150
+}
+
+# default song
+var currentSong = "Curbi - What You Like [NCS Release].mp3"
+
 # bpm of song
-var bpm = 128
+var bpm = song_list[currentSong]
 
 # song length in seconds
 var songLengthSeconds = 0
@@ -55,8 +65,9 @@ func set_score_grade(new):
 	# tuning value to highest score possible
 	var high_score_max_tune = 0.9
 	
-	print(high_score_max)
-	print(high_score_max * high_score_max_tune)
+	# debug output for high score values
+	print("Highest score possible: " + str(high_score_max))
+	print("Highest score possible (after tune): " + str(high_score_max * high_score_max_tune))
 	
 	# set grade based on score
 	if score > score_ranges[0] * (high_score_max_tune * high_score_max):
