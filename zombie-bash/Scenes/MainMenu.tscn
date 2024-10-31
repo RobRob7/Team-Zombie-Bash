@@ -83,6 +83,7 @@ size_flags_vertical = 3
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "Quit"
