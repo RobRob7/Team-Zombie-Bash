@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbcl6fttxmr3w" path="res://Scenes/Camera.tscn" id="2_x3mgr"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_lkj6a"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
-[ext_resource type="AudioStream" path="res://Sounds/Curbi - What You Like [NCS Release].mp3" id="6_8gkiy"]
+[ext_resource type="AudioStream" uid="uid://bj2ajc72p15bh" path="res://Sounds/Songs/Curbi - What You Like [NCS Release].mp3" id="6_8gkiy"]
 [ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
 

@@ -69,6 +69,7 @@ layout_mode = 2
 text = "Start Game"
 
 [node name="BackButton" type="Button" parent="CanvasLayer/Main"]
+layout_mode = 0
 offset_left = 33.0
 offset_top = 30.0
 offset_right = 89.0
