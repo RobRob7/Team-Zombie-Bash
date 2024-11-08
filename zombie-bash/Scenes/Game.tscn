@@ -1,37 +1,42 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3pet4v6sysex"]
+[gd_scene load_steps=9 format=3 uid="uid://c3pet4v6sysex"]
 
 [ext_resource type="PackedScene" uid="uid://bt8m3svyu0qqw" path="res://Scenes/ArrowButton.tscn" id="1"]
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_left_frames.tres" id="2"]
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://bexmha5sx4tuh" path="res://Sprites/game/road/road.png" id="4"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
 [ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/duck.mp3" id="8_prr3f"]
-[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="9_uknlr"]
+[ext_resource type="PackedScene" uid="uid://cu5ilfb7cuguu" path="res://player.tscn" id="10_3ksl1"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hu33"]
+size = Vector3(10, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_un2g5"]
+size = Vector3(10, 1, 3)
+
+[node name="Game" type="Node"]
 script = ExtResource("6")
 bpm = 105
 
-[node name="road" type="Sprite2D" parent="."]
-position = Vector2(100, 0)
-texture = ExtResource("4")
-centered = false
-
-[node name="ArrowUp" parent="." instance=ExtResource("1")]
-position = Vector2(160, 164)
+[node name="ArrowButton2" parent="." instance=ExtResource("1")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.5, 0.51, 0)
 input = "up"
 
-[node name="ArrowLeft" parent="." instance=ExtResource("1")]
-position = Vector2(120, 164)
-sprite_frames = ExtResource("2")
+[node name="ArrowButton3" parent="." instance=ExtResource("1")]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -4.5, 0.51, 0.8)
+input = "right"
+
+[node name="ArrowButton" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.5, 0.51, -0.8)
 input = "left"
 
-[node name="ArrowRight" parent="." instance=ExtResource("1")]
-position = Vector2(200, 164)
-sprite_frames = ExtResource("3")
-input = "right"
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0318121, 0.999494, 0, -0.999494, -0.0318121, -0.504023, 3.78595, 0)
+light_energy = 15.384
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("10_3ksl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.7, 0)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 4.0
@@ -42,6 +47,26 @@ theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7")
 text = "0"
 
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_3hu33")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_un2g5")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, -1.77636e-15, -4.37114e-08, -2, 1, 0)
+current = true
+
+[node name="Conductor" parent="." instance=ExtResource("8")]
+stream = ExtResource("8_prr3f")
+volume_db = -15.0
+bpm = 105
+
 [node name="Combo" type="Label" parent="."]
 offset_left = 4.0
 offset_top = 20.0
@@ -50,33 +75,3 @@ offset_bottom = 34.0
 theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
 theme_override_fonts/font = ExtResource("7")
 horizontal_alignment = 1
-
-[node name="PauseLabel" type="Label" parent="."]
-offset_left = 72.0
-offset_top = 48.0
-offset_right = 250.0
-offset_bottom = 112.0
-theme_override_font_sizes/font_size = 46
-text = "PAUSED"
-
-[node name="Conductor" parent="." instance=ExtResource("8")]
-stream = ExtResource("8_prr3f")
-volume_db = -15.0
-bpm = 105
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(161, 109)
-
-[node name="Background" type="TextureRect" parent="Camera2D"]
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -721.0
-offset_top = -477.0
-offset_right = 879.0
-offset_bottom = 723.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_uknlr")
-expand_mode = 1

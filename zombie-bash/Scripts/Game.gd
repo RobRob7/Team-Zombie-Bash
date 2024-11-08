@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 # current score
 var score = 0
@@ -52,7 +52,6 @@ var instance
 # ran only once, when node enters scene
 func _ready():
 	# hide paused screen
-	$PauseLabel.visible = false
 	
 	# random seed set
 	randomize()

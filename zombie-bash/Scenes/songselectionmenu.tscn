@@ -28,6 +28,7 @@ grow_vertical = 2
 theme = ExtResource("2_gw4jl")
 
 [node name="StartButton" type="Button" parent="Main"]
+layout_mode = 0
 offset_left = 335.0
 offset_top = 342.0
 offset_right = 815.0
@@ -37,6 +38,7 @@ script = ExtResource("3_8bndm")
 
 [node name="Title" type="Label" parent="Main"]
 modulate = Color(1, 0, 0, 1)
+layout_mode = 0
 offset_left = 334.0
 offset_top = 208.0
 offset_right = 814.0

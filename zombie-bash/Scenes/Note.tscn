@@ -1,33 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bggsf8k40qd7c"]
+[gd_scene load_steps=5 format=3 uid="uid://bggsf8k40qd7c"]
 
 [ext_resource type="SpriteFrames" path="res://Frames/note_frames.tres" id="1"]
-[ext_resource type="Texture2D" uid="uid://6yqp726ibi2" path="res://Sprites/game/particles/star.png" id="2"]
 [ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="3"]
 [ext_resource type="Script" path="res://Scripts/Note.gd" id="4"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(8, 8)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4njtu"]
+size = Vector3(0.2, 0.2, 0.2)
 
-[node name="Note" type="Area2D" groups=["note"]]
+[node name="Note" type="Area3D" groups=["note"]]
 script = ExtResource("4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+pixel_size = 0.025
 sprite_frames = ExtResource("1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 16
-lifetime = 0.3
-one_shot = true
-explosiveness = 0.8
-texture = ExtResource("2")
-emission_shape = 1
-emission_sphere_radius = 1.0
-spread = 180.0
-gravity = Vector2(0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4njtu")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -38,10 +27,10 @@ one_shot = true
 [node name="Label" type="Label" parent="Node2D"]
 anchors_preset = -1
 anchor_right = 0.046
-offset_left = -20.0
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 6.0
+offset_left = 316.0
+offset_top = 423.0
+offset_right = 877.0
+offset_bottom = 512.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3")
 horizontal_alignment = 1
