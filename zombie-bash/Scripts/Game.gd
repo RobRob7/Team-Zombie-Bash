@@ -215,7 +215,13 @@ func _on_Conductor_beat(position):
 		if get_tree().change_scene_to_file("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")
 
-
+func NoteMissedReaction():
+	print("TEST")
+	$NoteMissedLabel.text = "MISS"
+	print("TEST1.5")
+	await get_tree().create_timer(0.3).timeout
+	print("TEST2")
+	$NoteMissedLabel.text = ""
 # spawns notes based on measure position
 func _on_Conductor_measure(position):
 	# if measure is 1
@@ -270,7 +276,7 @@ func _spawn_notes(to_spawn):
 
 		# add this instance note as a child
 		add_child(instance)
-		
+	
 
 # will increment score based on performance
 func increment_score(scoreIncrementValue):

@@ -34,8 +34,8 @@ func _physics_process(delta):
 		position.x += speed * delta
 		
 		# if note exceeds y position
-		if position.x > 200:
-			
+		if position.x < -4.7:
+			get_parent().NoteMissedReaction()
 			# free note resources
 			queue_free()
 			
@@ -68,7 +68,6 @@ func initialize(lane):
 	
 	# speed of note to reach target (in 2 seconds)
 	speed = DIST_TO_TARGET / 2.0
-
 
 # called when note is to be destroyed
 func destroy(score):
