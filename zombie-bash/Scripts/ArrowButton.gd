@@ -15,6 +15,10 @@ var current_note = null
 # variable input export var
 @export var input = ""
 
+# only ran once when node enters scene
+func _ready() -> void:
+	pass
+
 # handles input on key presses
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -23,7 +27,7 @@ func _unhandled_input(event):
 	# if one of keys pressed (a, w, d or left, up, right)
 		if event.is_action(input):
 		# if one of keys pressed (a, w, d or left, up, right)
-			if event.is_action_pressed(input, false):
+		if event.is_action_pressed(input, true):
 			# if the current note is perfect, good, okay
 				if current_note != null:
 				# if perfect note

@@ -1,8 +1,5 @@
 extends AudioStreamPlayer
 
-# beats per minute
-@export var bpm := 75
-
 # number of measures
 @export var measures := 4
 
@@ -25,15 +22,16 @@ var beats_before_start = 0
 # holds current measure
 var measure = 1
 
-# Determining how close to the beat an event is
-#var closest = 0
-#var time_off_beat = 0.0
 
 # called when node enters scene
 func _ready():
 	# calculate seconds per beat
-	sec_per_beat = 60.0 / bpm
-	self.stream = load(Global.currentSong)
+	sec_per_beat = 60.0 / Global.bpm
+	
+	# set the audio stream to selected song
+	self.stream = load("res://Sounds/Songs/" + Global.currentSong)
+	
+	# set the song length (used to calculate total number of beats in song)
 	setSongLength()
 	
 
@@ -53,8 +51,12 @@ func _physics_process(_delta):
 		# report the beat
 		_report_beat()
 		
+
+# function sets the global song length var
 func setSongLength():
 	Global.songLengthSeconds = self.stream.get_length()
+	print(Global.songLengthSeconds)
+	
 
 # reports beat
 func _report_beat():
@@ -76,6 +78,7 @@ func _report_beat():
 		# increment measure by 1
 		measure += 1
 
+
 # plays song with beat offset
 func play_with_beat_offset(num):
 	# number of beats before start
@@ -87,6 +90,7 @@ func play_with_beat_offset(num):
 	# start timer
 	$StartTimer.start()
 	
+
 
 # plays song from desired beat (can be used to start game from further point in song)
 func play_from_beat(beat, offset):
@@ -101,6 +105,7 @@ func play_from_beat(beat, offset):
 
 	# set current measure
 	measure = beat % measures
+
 
 # timeout for timer
 func _on_StartTimer_timeout():

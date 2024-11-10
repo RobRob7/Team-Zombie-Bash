@@ -1,18 +1,11 @@
 extends Area3D
+# distance from spawned note/zombie to player vehicle (static Y)
+var DIST_TO_TARGET = Global.TARGET_Y - Global.SPAWN_Y
 
-# y position of arrow buttons on lane (the ones that are static)
-const TARGET_Y = -4.5
-
-# y position where note is spawned
-const SPAWN_Y = 4.5
-
-# distance from spawned note to static arrow button
-const DIST_TO_TARGET = TARGET_Y - SPAWN_Y
-
-# (x,y) spawn positions for each note
-var LEFT_LANE_SPAWN = Vector3(4.5,0.51,-0.8)
-var CENTRE_LANE_SPAWN = Vector3(4.5,0.51,0)
-var RIGHT_LANE_SPAWN = Vector3(4.5,0.51,0.8)
+# (x,y) spawn positions for each note/zombie
+var LEFT_LANE_SPAWN = Vector2(Global.SPAWN_X[0], Global.SPAWN_Y)
+var CENTRE_LANE_SPAWN = Vector2(Global.SPAWN_X[1], Global.SPAWN_Y)
+var RIGHT_LANE_SPAWN = Vector2(Global.SPAWN_X[2], Global.SPAWN_Y)
 
 # speed of note
 var speed = 0
@@ -31,10 +24,9 @@ func _physics_process(delta):
 	# if note not hit
 	if !hit:
 		# moving note y position further down
-		position.x += speed * delta
-		
+		global_position.y += speed * delta
 		# if note exceeds y position
-		if position.x < -4.7:
+		if global_position.x < Global.TARGET_Y -0.2:
 			get_parent().NoteMissedReaction()
 			# free note resources
 			queue_free()
@@ -93,6 +85,7 @@ func destroy(score):
 	elif score == 1:
 		$Node2D/Label.text = "OKAY"
 		$Node2D/Label.modulate = Color("997577")
+
 
 # on timer timeout for feedback labels, free resources
 func _on_Timer_timeout():

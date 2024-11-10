@@ -27,9 +27,15 @@ theme = ExtResource("3_iqes5")
 
 [node name="CenterContainer" type="CenterContainer" parent="Main"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -196.0
+offset_right = 86.0
+offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -46,28 +52,94 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CreditsTitle" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Song Credits"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 250)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 45
-text = "Credits"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VolumeTitle" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SongCreditsList" type="Label" parent="Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 22
-text = "Song: Wubbaduck - Rush [NCS Release]
+text = "Song: Curbi - What You Like [NCS10 Release]
 Music provided by NoCopyrightSounds
-Free Download/Stream: http://ncs.io/RushFreeDL
-Watch: http://youtu.be/vfN4AlCFlgw"
-horizontal_alignment = 1
+Free Download/Stream: http://NCS.io/WhatYouLike
+Watch: http://youtu.be/YQM6Gpyo6U8
+
+Song: RIOT - Pushing On [NCS Release]
+Music provided by NoCopyrightSounds
+Free Download/Stream: http://ncs.io/PushingOn
+Watch: http://ncs.lnk.to/PushingOnAT/youtube
+
+Song: RIOT & Sippy - Pump Up The Bassline [NCS Release]
+Music provided by NoCopyrightSounds
+Free Download/Stream: http://ncs.io/PUTB
+Watch: http://ncs.lnk.to/PUTBAT/youtube"
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = -252.0
+offset_right = 616.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Main/CenterContainer2"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/CenterContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/CenterContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TeamTitle" type="Label" parent="Main/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Team"
+vertical_alignment = 1
+
+[node name="TeamCredits" type="Label" parent="Main/CenterContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 22
+text = "Robert J. Armendariz
+Aren Trombley
+Garrett Turner
+Tyreke Hetzel"
 vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="Main"]

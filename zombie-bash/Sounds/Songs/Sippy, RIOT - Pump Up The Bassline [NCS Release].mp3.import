@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p6e6qla4jrdh"
+path="res://.godot/imported/Sippy, RIOT - Pump Up The Bassline [NCS Release].mp3-bab9dd8d17c1cf2503f967246f04738e.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Songs/Sippy, RIOT - Pump Up The Bassline [NCS Release].mp3"
+dest_files=["res://.godot/imported/Sippy, RIOT - Pump Up The Bassline [NCS Release].mp3-bab9dd8d17c1cf2503f967246f04738e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
