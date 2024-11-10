@@ -1,11 +1,11 @@
 extends Area3D
 # distance from spawned note/zombie to player vehicle (static Y)
-var DIST_TO_TARGET = Global.TARGET_Y - Global.SPAWN_Y
+var DIST_TO_TARGET = Global.TARGET_X - Global.SPAWN_X
 
 # (x,y) spawn positions for each note/zombie
-var LEFT_LANE_SPAWN = Vector2(Global.SPAWN_X[0], Global.SPAWN_Y)
-var CENTRE_LANE_SPAWN = Vector2(Global.SPAWN_X[1], Global.SPAWN_Y)
-var RIGHT_LANE_SPAWN = Vector2(Global.SPAWN_X[2], Global.SPAWN_Y)
+var LEFT_LANE_SPAWN = Vector3(Global.SPAWN_X, Global.SPAWN_Y, Global.SPAWN_Z[0])
+var CENTRE_LANE_SPAWN = Vector3(Global.SPAWN_X, Global.SPAWN_Y, Global.SPAWN_Z[1])
+var RIGHT_LANE_SPAWN = Vector3(Global.SPAWN_X, Global.SPAWN_Y, Global.SPAWN_Z[2])
 
 # speed of note
 var speed = 0
@@ -24,9 +24,9 @@ func _physics_process(delta):
 	# if note not hit
 	if !hit:
 		# moving note y position further down
-		global_position.y += speed * delta
+		position.x += speed * delta
 		# if note exceeds y position
-		if global_position.x < Global.TARGET_Y -0.2:
+		if position.x < Global.TARGET_X -0.2:
 			get_parent().NoteMissedReaction()
 			# free note resources
 			queue_free()

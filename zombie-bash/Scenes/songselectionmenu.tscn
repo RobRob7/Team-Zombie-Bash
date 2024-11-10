@@ -27,16 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_gw4jl")
 
-<<<<<<< HEAD
-[node name="StartButton" type="Button" parent="Main"]
-layout_mode = 0
-offset_left = 335.0
-offset_top = 342.0
-offset_right = 815.0
-offset_bottom = 389.0
-text = "Start Game"
-script = ExtResource("3_8bndm")
-=======
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Main"]
 layout_mode = 1
 anchors_preset = 8
@@ -50,7 +40,6 @@ offset_right = 58.5
 offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
->>>>>>> 61ea626dba922ca8a6b583666efc5e2e461d9c10
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/CenterContainer"]
 layout_mode = 2
@@ -65,15 +54,7 @@ alignment = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 modulate = Color(1, 0, 0, 1)
-<<<<<<< HEAD
-layout_mode = 0
-offset_left = 334.0
-offset_top = 208.0
-offset_right = 814.0
-offset_bottom = 276.0
-=======
 layout_mode = 2
->>>>>>> 61ea626dba922ca8a6b583666efc5e2e461d9c10
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 45
 text = "Songs"

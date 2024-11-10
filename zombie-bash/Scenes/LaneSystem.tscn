@@ -6,9 +6,8 @@
 [ext_resource type="SpriteFrames" path="res://Frames/arrow_right_frames.tres" id="4_bn1tn"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="5_0fnln"]
 
-[node name="LaneSystem" type="Node2D"]
-position = Vector2(-320, -185)
-scale = Vector2(2, 2)
+[node name="LaneSystem" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0, -320, -185, 0)
 
 [node name="road" type="Sprite2D" parent="."]
 visible = false
@@ -17,19 +16,19 @@ texture = ExtResource("1_7kyf8")
 centered = false
 
 [node name="ArrowUp" parent="." instance=ExtResource("2_l1tnj")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 160, 164, 0)
 modulate = Color(1, 0, 0, 1)
-position = Vector2(160, 164)
 input = "up"
 
 [node name="ArrowLeft" parent="." instance=ExtResource("2_l1tnj")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 120, 164, 0)
 modulate = Color(1, 0, 0, 1)
-position = Vector2(120, 164)
 sprite_frames = ExtResource("3_6i51u")
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource("2_l1tnj")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 200, 164, 0)
 modulate = Color(1, 0, 0, 1)
-position = Vector2(200, 164)
 sprite_frames = ExtResource("4_bn1tn")
 input = "right"
 

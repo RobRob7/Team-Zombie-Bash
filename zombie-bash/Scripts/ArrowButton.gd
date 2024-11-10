@@ -27,7 +27,7 @@ func _unhandled_input(event):
 	# if one of keys pressed (a, w, d or left, up, right)
 		if event.is_action(input):
 		# if one of keys pressed (a, w, d or left, up, right)
-		if event.is_action_pressed(input, true):
+			if event.is_action_pressed(input, true):
 			# if the current note is perfect, good, okay
 				if current_note != null:
 				# if perfect note

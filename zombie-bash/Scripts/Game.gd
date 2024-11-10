@@ -59,22 +59,20 @@ func _ready():
 	print("BPM: " + str(Global.bpm))
 	print("Song Length: " + str(Global.songLengthSeconds))
 	# set song name and bpm strings
-	$LaneSystem/SongName.text = "Song: " + str(Global.currentSong)
-	$LaneSystem/SongBPM.text = "BPM: " + str(Global.bpm)
+	$SongName.text = "Song: " + str(Global.currentSong)
+	$SongBPM.text = "BPM: " + str(Global.bpm)
 	# reset total notes spawned
 	Global.total_notes_spawned = 0
 	# set total number of beats in song being played
 	total_song_beats = (Global.songLengthSeconds / 60.0) * Global.bpm
 	# Y osition of player vehicle
-	Global.TARGET_Y = $LaneSystem/ArrowLeft.global_position.y
+	#Global.TARGET_Y = $LaneSystem/ArrowLeft.global_position.y
 	# Y position of note/zombie spawn
-	Global.SPAWN_Y = $LaneSystem.global_position.y
+	#Global.SPAWN_Y = $LaneSystem.global_position.y
 	# X position of left lane note/zombie spawn
-	Global.SPAWN_X[0] = $LaneSystem/ArrowLeft.global_position.x
+	#Global.SPAWN_X = $LaneSystem/ArrowLeft.global_position.x
 	# X position of middle lane note/zombie spawn
-	Global.SPAWN_X[1] = $LaneSystem/ArrowUp.global_position.x
-	# X position of right lane note/zombie spawn
-	Global.SPAWN_X[2] = $LaneSystem/ArrowRight.global_position.x
+	#Global.SPAWN_Z[0] = $LaneSystem.global_position.z
 	
 	# random seed set
 	randomize()
@@ -171,11 +169,8 @@ func _on_Conductor_beat(position):
 			print ("Error changing scene to End")
 
 func NoteMissedReaction():
-	print("TEST")
 	$NoteMissedLabel.text = "MISS"
-	print("TEST1.5")
 	await get_tree().create_timer(0.3).timeout
-	print("TEST2")
 	$NoteMissedLabel.text = ""
 # spawns notes based on measure position
 func _on_Conductor_measure(position):
@@ -261,12 +256,12 @@ func increment_score(scoreIncrementValue):
 	score += scoreIncrementValue * combo
 
 	# update score display
-	$LaneSystem/Score.text = str(score)
+	$Score.text = str(score)
 
 	# if combo > 0
 	if combo > 0:
 		# update combo text
-		$LaneSystem/Combo.text = str(combo) + " combo!"
+		$Combo.text = str(combo) + " combo!"
 
 		# if combo exceeds previous max combo
 		if combo > max_combo:
@@ -277,7 +272,7 @@ func increment_score(scoreIncrementValue):
 	# if combo <= 0
 	else:
 		# update combo text (none)
-		$LaneSystem/Combo.text = ""
+		$Combo.text = ""
 
 
 # will reset combo count
@@ -286,4 +281,4 @@ func reset_combo():
 	combo = 0
 
 	# update combo text (none)
-	$LaneSystem/Combo.text = ""
+	$Combo.text = ""

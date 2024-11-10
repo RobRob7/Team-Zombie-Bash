@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 
 # signal: reports song position in beats on every beat
 signal beat(position)
@@ -41,13 +41,15 @@ var total_notes_spawned = 0
 var main_volume_value = 1.0
 
 # y position of arrow buttons on lane (the ones that are static)
-var TARGET_Y = 0.0
+var TARGET_X = -4.5
 
 # y position where note is spawned
-var SPAWN_Y = 0.0
+var SPAWN_Y = 0.51
 
 # x positions for note spawn
-var SPAWN_X = [0.0, 0.0, 0.0]
+var SPAWN_X = 4.5
+
+var SPAWN_Z = [-0.8, 0.0, 0.8]
 
 # will set the score grade for end screen stats
 func set_score_grade(new):

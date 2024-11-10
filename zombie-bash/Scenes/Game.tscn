@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3pet4v6sysex"]
+[gd_scene load_steps=9 format=3 uid="uid://c3pet4v6sysex"]
 
-[ext_resource type="PackedScene" uid="uid://cbcl6fttxmr3w" path="res://Scenes/Camera.tscn" id="2_x3mgr"]
-[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_lkj6a"]
->>>>>>> 61ea626dba922ca8a6b583666efc5e2e461d9c10
+[ext_resource type="PackedScene" uid="uid://bt8m3svyu0qqw" path="res://Scenes/ArrowButton.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="6"]
-[ext_resource type="AudioStream" uid="uid://bj2ajc72p15bh" path="res://Sounds/Songs/Curbi - What You Like [NCS Release].mp3" id="6_8gkiy"]
-[ext_resource type="PackedScene" uid="uid://cf5y1mcbqogw" path="res://Scenes/LaneSystem.tscn" id="6_qekfp"]
+[ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="6_lyqnq"]
+[ext_resource type="FontFile" path="res://Fonts/heartbit2x.tres" id="7"]
 [ext_resource type="PackedScene" uid="uid://bkuto0ehjooso" path="res://Scenes/Conductor.tscn" id="8"]
-<<<<<<< HEAD
-[ext_resource type="AudioStream" uid="uid://oxkkwjw2l7d3" path="res://Sounds/duck.mp3" id="8_prr3f"]
 [ext_resource type="PackedScene" uid="uid://cu5ilfb7cuguu" path="res://player.tscn" id="10_3ksl1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3hu33"]
@@ -66,18 +62,7 @@ transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5
 current = true
 
 [node name="Conductor" parent="." instance=ExtResource("8")]
-stream = ExtResource("8_prr3f")
 volume_db = -15.0
-bpm = 105
-
-[node name="Combo" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 20.0
-offset_right = 96.0
-offset_bottom = 34.0
-theme_override_colors/font_color = Color(0.964706, 0.839216, 0.741176, 1)
-theme_override_fonts/font = ExtResource("7")
-horizontal_alignment = 1
 
 [node name="NoteMissedLabel" type="Label" parent="."]
 modulate = Color(1, 0.101961, 0.0901961, 1)
@@ -86,3 +71,39 @@ offset_top = 315.0
 offset_right = 651.0
 offset_bottom = 353.0
 theme_override_font_sizes/font_size = 25
+
+[node name="SongBPM" type="Label" parent="."]
+offset_left = 251.5
+offset_top = 23.0
+offset_right = 291.5
+offset_bottom = 46.0
+theme = ExtResource("6_lyqnq")
+theme_override_font_sizes/font_size = 10
+text = "BPM"
+
+[node name="SongName" type="Label" parent="."]
+offset_left = 251.5
+offset_right = 291.5
+offset_bottom = 23.0
+theme = ExtResource("6_lyqnq")
+theme_override_font_sizes/font_size = 10
+text = "NAME"
+
+[node name="Combo" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 48.0
+theme = ExtResource("6_lyqnq")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 18.0
+theme = ExtResource("6_lyqnq")
+theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "0"
