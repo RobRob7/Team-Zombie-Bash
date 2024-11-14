@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_41whi"]
 [ext_resource type="Texture2D" uid="uid://ckgr3wu2x3psi" path="res://Sprites/ui/test_button/test_button1.png" id="4_02p5c"]
 [ext_resource type="Texture2D" uid="uid://f5nm3ska7f4y" path="res://Sprites/ui/test_button/test_button2.png" id="5_d27u7"]
-[ext_resource type="AudioStream" uid="uid://dlxv33ub7dg43" path="res://Sounds/bell_ding.ogg" id="6_vj7c7"]
+[ext_resource type="AudioStream" uid="uid://blxlptr46k071" path="res://Sounds/bell_ding.ogg" id="6_vj7c7"]
 [ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="7_mc0ox"]
 [ext_resource type="Texture2D" uid="uid://bdp87wyiojxek" path="res://Sprites/ui/slider_arrow2.png" id="8_axreg"]
 [ext_resource type="Texture2D" uid="uid://bb21jnyckvc4t" path="res://Sprites/ui/slider.png" id="9_5fq1h"]
