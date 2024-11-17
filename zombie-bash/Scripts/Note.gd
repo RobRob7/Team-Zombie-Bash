@@ -1,93 +1,91 @@
 extends Area3D
-# distance from spawned note/zombie to player vehicle (static Y)
+
+# Distance from spawned note/zombie to player vehicle (static Y)
 var DIST_TO_TARGET = Global.TARGET_X - Global.SPAWN_X
 
-# (x,y) spawn positions for each note/zombie
+# (x, y) spawn positions for each note/zombie
 var LEFT_LANE_SPAWN = Vector3(Global.SPAWN_X, Global.SPAWN_Y, Global.SPAWN_Z[0])
 var CENTRE_LANE_SPAWN = Vector3(Global.SPAWN_X, Global.SPAWN_Y, Global.SPAWN_Z[1])
 var RIGHT_LANE_SPAWN = Vector3(Global.SPAWN_X, Global.SPAWN_Y, Global.SPAWN_Z[2])
 
-# speed of note
+# Speed of the note
 var speed = 0
 
-# note hit state
+# Note hit state
 var hit = false
 
+# Load the new ZombieNote scene
+var zombie_note_scene = preload("res://Scenes/ZombieNote.tscn")
 
-# ran only once, when node enters scene
+# Called once when the node enters the scene
 func _ready():
-	pass
+	print("Note ready: Initial position is ", position)
 
-
-# ran every frame
+# Called every frame to update position
 func _physics_process(delta):
-	# if note not hit
 	if !hit:
-		# moving note y position further down
+		# Move the note towards the player (adjust x position)
 		position.x += speed * delta
-		# if note exceeds y position
-		if position.x < Global.TARGET_X -0.2:
+		# Debug print the position to monitor movement
+		print("Note position (x): ", position.x, " Target X: ", Global.TARGET_X, " Speed: ", speed)
+		# Check if note has passed the target position
+		if position.x < Global.TARGET_X - 1.0:  # Loosen the margin
+			print("Note missed: Position X is ", position.x)
 			get_parent().NoteMissedReaction()
-			# free note resources
-			queue_free()
-			
-			# reset combo
-			get_parent().reset_combo()
-	# if note hit
+			queue_free()  # Free resources
+			get_parent().reset_combo()  # Reset combo
 	else:
-		# moving note further up
-		$Node2D.position.x -= speed * delta
+		# Move note further up if it has been hit
+		$ZombieNote/Node2D.position.x -= speed * delta
 
-
-# initialize a lane
+# Initialize a note instance in a specific lane
 func initialize(lane):
-	# if left lane
-	if lane == 0:
-		$AnimatedSprite3D.frame = 0
-		position = LEFT_LANE_SPAWN
-	# if middle lane
-	elif lane == 1:
-		$AnimatedSprite3D.frame = 1
-		position = CENTRE_LANE_SPAWN
-	# if right lane
-	elif lane == 2:
-		$AnimatedSprite3D.frame = 2
-		position = RIGHT_LANE_SPAWN
-	# invalid lane
-	else:
-		printerr("Invalid lane set for note: " + str(lane))
-		return
+	# Create an instance of the ZombieNote scene
+	var zombie_note_instance = zombie_note_scene.instantiate()
 	
-	# speed of note to reach target (in 2 seconds)
-	speed = DIST_TO_TARGET / 2.0
+	# Add the instance to the current scene
+	add_child(zombie_note_instance)
+	
+	# Set position based on lane
+	match lane:
+		0:
+			zombie_note_instance.position = LEFT_LANE_SPAWN
+		1:
+			zombie_note_instance.position = CENTRE_LANE_SPAWN
+		2:
+			zombie_note_instance.position = RIGHT_LANE_SPAWN
+		_:
+			printerr("Invalid lane set for zombie note: " + str(lane))
+			return
 
-# called when note is to be destroyed
+	# Increase the speed to reach the target faster
+	speed = DIST_TO_TARGET / 1.0
+	print("Note initialized at lane ", lane, " with speed ", speed)
+
+# Called when the note is destroyed
 func destroy(score):
+	# Hide zombie and arrow sprites
+	$ZombieNote/ZombieSprite.visible = false
+	$ZombieNote/ArrowSprite.visible = false
 
-	# hide note sprite
-	$AnimatedSprite3D.visible = false
-
-	# start timer
-	$Timer.start()
+	# Start feedback timer
+	$ZombieNote/Timer.start()
 	
-	# note is hit
+	# Mark note as hit
 	hit = true
 	
-	# GREAT hit condition (display "GREAT")
-	if score == 3:
-		$Node2D/Label.text = "GREAT"
-		$Node2D/Label.modulate = Color("f6d6bd")
-	# GOOD hit condition (display "GOOD")
-	elif score == 2:
-		$Node2D/Label.text = "GOOD"
-		$Node2D/Label.modulate = Color("c3a38a")
-	# OKAY hit condition (display "OKAY")
-	elif score == 1:
-		$Node2D/Label.text = "OKAY"
-		$Node2D/Label.modulate = Color("997577")
+	# Display feedback based on score
+	match score:
+		3:
+			$ZombieNote/Node2D/Label.text = "GREAT"
+			$ZombieNote/Node2D/Label.modulate = Color("f6d6bd")
+		2:
+			$ZombieNote/Node2D/Label.text = "GOOD"
+			$ZombieNote/Node2D/Label.modulate = Color("c3a38a")
+		1:
+			$ZombieNote/Node2D/Label.text = "OKAY"
+			$ZombieNote/Node2D/Label.modulate = Color("997577")
 
-
-# on timer timeout for feedback labels, free resources
+# Called when the timer for feedback labels times out, freeing resources
 func _on_Timer_timeout():
-	# free note node
 	queue_free()

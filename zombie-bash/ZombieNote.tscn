@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckgg1wf0j7hxi"]
+
+[ext_resource type="Texture2D" uid="uid://bmwob71hc7u6l" path="res://Sprites/game/zombie_assest/Bloody_Zombie_M_Hair.png" id="1_slf3j"]
+
+[node name="ZombieNote" type="Sprite3D"]
+
+[node name="BloodyZombie" type="Sprite3D" parent="."]
+texture = ExtResource("1_slf3j")
