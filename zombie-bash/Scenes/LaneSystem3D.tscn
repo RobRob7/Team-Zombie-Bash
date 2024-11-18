@@ -15,17 +15,14 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="ArrowLeft" parent="." instance=ExtResource("1_54qs0")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.5, 0.51, -0.8)
-visible = false
 input = "left"
 
 [node name="ArrowRight" parent="." instance=ExtResource("1_54qs0")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.5, 0.51, 0.8)
-visible = false
 input = "right"
 
 [node name="ArrowUp" parent="." instance=ExtResource("1_54qs0")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.5, 0.51, 0)
-visible = false
 input = "up"
 
 [node name="Player" parent="." instance=ExtResource("3_laqru")]

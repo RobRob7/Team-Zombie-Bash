@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bgnhhslw6b0mt"
+path="res://.godot/imported/blood_stain.obj-81640b34cc672e46ff5eeffb82681300.mesh"
+
+[deps]
+
+files=["res://.godot/imported/blood_stain.obj-81640b34cc672e46ff5eeffb82681300.mesh"]
+
+source_file="res://Sprites/game/blood/blood_stain.obj"
+dest_files=["res://.godot/imported/blood_stain.obj-81640b34cc672e46ff5eeffb82681300.mesh", "res://.godot/imported/blood_stain.obj-81640b34cc672e46ff5eeffb82681300.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

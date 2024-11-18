@@ -1,4 +1,4 @@
-extends AnimatedSprite3D
+extends Sprite3D
 
 # perfect note hit state
 var perfect = false
@@ -36,16 +36,22 @@ func _unhandled_input(event):
 					if perfect:
 						# increment score by 3
 						get_parent().get_parent().increment_score(3)
+						$BloodSplatter.show()
+						$BloodSplatter/BloodTimer.start()
 						# destroy the note
 						current_note.destroy(3)
 					elif good:
 						# increment score by 2
 						get_parent().get_parent().increment_score(2)
+						$BloodSplatter.show()
+						$BloodSplatter/BloodTimer.start()
 						# destroy the note
 						current_note.destroy(2)
 					elif okay:
 						# increment score by 1
 						get_parent().get_parent().increment_score(1)
+						$BloodSplatter.show()
+						$BloodSplatter/BloodTimer.start()
 						# destroy the note
 						current_note.destroy(1)
 
@@ -114,3 +120,7 @@ func _reset():
 	perfect = false
 	good = false
 	okay = false
+
+# on blood timeout
+func _on_blood_timer_timeout() -> void:
+	$BloodSplatter.hide()

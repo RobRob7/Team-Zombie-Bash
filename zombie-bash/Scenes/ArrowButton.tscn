@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt8m3svyu0qqw"]
+[gd_scene load_steps=8 format=3 uid="uid://bt8m3svyu0qqw"]
 
-[ext_resource type="SpriteFrames" path="res://Frames/arrow_up_frames.tres" id="1"]
 [ext_resource type="Script" path="res://Scripts/ArrowButton.gd" id="2"]
+[ext_resource type="ArrayMesh" uid="uid://bgnhhslw6b0mt" path="res://Sprites/game/blood/blood_stain.obj" id="3_0p4gc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ndw3w"]
 size = Vector3(0.2, 0.1, 0.2)
@@ -12,10 +12,15 @@ size = Vector3(0.2, 0.25, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_onuv2"]
 size = Vector3(0.2, 0.5, 0.2)
 
-[node name="ArrowButton" type="AnimatedSprite3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wgbu"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42tkx"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="ArrowButton" type="Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 pixel_size = 0.025
-sprite_frames = ExtResource("1")
 script = ExtResource("2")
 
 [node name="PerfectArea" type="Area3D" parent="."]
@@ -37,6 +42,19 @@ shape = SubResource("BoxShape3D_onuv2")
 wait_time = 0.05
 one_shot = true
 
+[node name="BloodSplatter" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0197525, 0.318687, 1.39303e-08)
+visible = false
+
+[node name="BloodTimer" type="Timer" parent="BloodSplatter"]
+wait_time = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BloodSplatter"]
+transform = Transform3D(20, 0, 0, 0, 17.3205, 10, 0, -10, 17.3205, 0, 0, 1.77252)
+mesh = ExtResource("3_0p4gc")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wgbu")
+surface_material_override/1 = SubResource("StandardMaterial3D_42tkx")
+
 [connection signal="area_entered" from="PerfectArea" to="." method="_on_PerfectArea_area_entered"]
 [connection signal="area_exited" from="PerfectArea" to="." method="_on_PerfectArea_area_exited"]
 [connection signal="area_entered" from="GoodArea" to="." method="_on_GoodArea_area_entered"]
@@ -44,3 +62,4 @@ one_shot = true
 [connection signal="area_entered" from="OkayArea" to="." method="_on_OkayArea_area_entered"]
 [connection signal="area_exited" from="OkayArea" to="." method="_on_OkayArea_area_exited"]
 [connection signal="timeout" from="PushTimer" to="." method="_on_PushTimer_timeout"]
+[connection signal="timeout" from="BloodSplatter/BloodTimer" to="." method="_on_blood_timer_timeout"]

@@ -9,7 +9,7 @@ var shake_decay = 0.1  # How fast the shake should decay
 var original_transform: Transform3D
 
 # variable for hard limit shake combo score
-var shake_max_combo = 50
+var shake_max_combo = 40
 
 # variable to tune shake intensity
 var shake_max_tune = 0.0004
