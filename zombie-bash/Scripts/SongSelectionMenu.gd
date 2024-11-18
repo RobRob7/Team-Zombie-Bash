@@ -6,6 +6,9 @@ var dropdown
 
 # ran only once, when node enters scene
 func _ready() -> void:
+	# set default difficulty
+	Global.difficulty = Global.difficulty_values[0]
+	
 	# song list button
 	dropdown = $CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SongListButton
 	
@@ -47,3 +50,8 @@ func _on_song_list_button_item_selected(index: int) -> void:
 func _on_back_button_pressed() -> void:
 	if get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn") != OK:
 		print ("Error changing scene to MainMenu")
+
+
+# called when difficulty option selected
+func _on_difficulty_options_item_selected(index: int) -> void:
+	Global.difficulty = Global.difficulty_values[index]

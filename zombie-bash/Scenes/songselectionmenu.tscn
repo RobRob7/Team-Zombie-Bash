@@ -68,6 +68,28 @@ layout_mode = 2
 layout_mode = 2
 text = "Start Game"
 
+[node name="DifficultyLabel" type="Label" parent="CanvasLayer/Main"]
+layout_mode = 0
+offset_left = 191.0
+offset_top = 253.0
+offset_right = 248.0
+offset_bottom = 278.0
+text = "Difficulty"
+
+[node name="DifficultyOptions" type="OptionButton" parent="CanvasLayer/Main/DifficultyLabel"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 23.0
+offset_right = 72.0
+offset_bottom = 56.0
+selected = 0
+item_count = 3
+popup/item_0/text = "EASY"
+popup/item_1/text = "MEDIUM"
+popup/item_1/id = 1
+popup/item_2/text = "HARD"
+popup/item_2/id = 2
+
 [node name="BackButton" type="Button" parent="CanvasLayer/Main"]
 layout_mode = 0
 offset_left = 33.0
@@ -78,4 +100,5 @@ text = "BACK"
 
 [connection signal="item_selected" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SongListButton" to="." method="_on_song_list_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Main/DifficultyLabel/DifficultyOptions" to="." method="_on_difficulty_options_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Main/BackButton" to="." method="_on_back_button_pressed"]

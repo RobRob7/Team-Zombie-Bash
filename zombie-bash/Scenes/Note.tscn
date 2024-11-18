@@ -1,38 +1,79 @@
-[gd_scene load_steps=4 format=3 uid="uid://bggsf8k40qd7c"]
+[gd_scene load_steps=11 format=3 uid="uid://bggsf8k40qd7c"]
 
 [ext_resource type="SpriteFrames" path="res://Frames/note_frames.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://ceq2dil8cmrih" path="res://Sprites/game/zombie_assest/Bloody_Zombie_L_Bald.png" id="3_mx6xi"]
 [ext_resource type="Script" path="res://Scripts/Note.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://bqu2cgx55eux2" path="res://Sprites/game/zombie_assest/Bloody_Zombie_M_Bald.png" id="4_v8a0s"]
+[ext_resource type="Texture2D" uid="uid://2ts4818twa1a" path="res://Sprites/game/zombie_assest/Zombie_L_Bald.png" id="5_i8bof"]
+[ext_resource type="Texture2D" uid="uid://bhmsx88cgedik" path="res://Sprites/game/zombie_assest/Zombie_M_Bald..png" id="6_0p0bu"]
+[ext_resource type="Texture2D" uid="uid://bmwob71hc7u6l" path="res://Sprites/game/zombie_assest/Bloody_Zombie_M_Hair.png" id="7_po2yj"]
+[ext_resource type="Texture2D" uid="uid://cdf5307q354cf" path="res://Sprites/game/zombie_assest/Bloody_Zombie_R_Hair.png" id="8_2isv1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4njtu"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.2, 0.2, 0.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tf6v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mx6xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v8a0s")
+}],
+"loop": true,
+"name": &"zombie1",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_i8bof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0p0bu")
+}],
+"loop": true,
+"name": &"zombie2",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_po2yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2isv1")
+}],
+"loop": true,
+"name": &"zombie3",
+"speed": 1.0
+}]
 
 [node name="Note" type="Area3D" groups=["note"]]
 script = ExtResource("4")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+visible = false
 pixel_size = 0.025
 sprite_frames = ExtResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0541771, 0, 0.00532357)
 shape = SubResource("BoxShape3D_4njtu")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="Label" type="Label" parent="Node2D"]
-anchors_preset = -1
-anchor_right = 0.046
-offset_left = -20.0
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 6.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Label3D" type="Label3D" parent="Node3D"]
+transform = Transform3D(1.19249e-08, 0.699663, -0.714473, 0, 0.714473, 0.699663, 1, -8.3434e-09, 8.52e-09, 0, 0.111043, 0)
+
+[node name="Zombie" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-2.18557e-09, 0.025, 0.0433013, 0, 0.0433013, -0.025, -0.05, -1.09279e-09, -1.89276e-09, 0, 0.229491, 0)
+sprite_frames = SubResource("SpriteFrames_tf6v6")
+animation = &"zombie3"
+frame_progress = 0.37963
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

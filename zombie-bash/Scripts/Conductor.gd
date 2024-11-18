@@ -11,7 +11,6 @@ var song_position_in_beats = 1
 
 # holds number of seconds per beat
 var sec_per_beat
-# = 60.0 / bpm
 
 # holds last reported beat
 var last_reported_beat = 0

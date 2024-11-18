@@ -15,9 +15,6 @@ var good = 0
 var okay = 0
 var missed = 0
 
-# song bpm
-#@export var bpm = 115
-
 # song position
 var song_position = 0.0
 # song position in beats
@@ -58,21 +55,33 @@ func _ready():
 	print("Song: " + str(Global.currentSong))
 	print("BPM: " + str(Global.bpm))
 	print("Song Length: " + str(Global.songLengthSeconds))
+	
 	# set song name and bpm strings
-	$SongName.text = "Song: " + str(Global.currentSong)
-	$SongBPM.text = "BPM: " + str(Global.bpm)
+	$LaneSystem3D/SongName.text = "Song: " + str(Global.currentSong)
+	$LaneSystem3D/SongBPM.text = "BPM: " + str(Global.bpm)
+	
 	# reset total notes spawned
 	Global.total_notes_spawned = 0
+	
 	# set total number of beats in song being played
 	total_song_beats = (Global.songLengthSeconds / 60.0) * Global.bpm
-	# Y osition of player vehicle
-	#Global.TARGET_Y = $LaneSystem/ArrowLeft.global_position.y
-	# Y position of note/zombie spawn
-	#Global.SPAWN_Y = $LaneSystem.global_position.y
-	# X position of left lane note/zombie spawn
-	#Global.SPAWN_X = $LaneSystem/ArrowLeft.global_position.x
-	# X position of middle lane note/zombie spawn
-	#Global.SPAWN_Z[0] = $LaneSystem.global_position.z
+	
+	# 3D where notes are spawned on XZ plane (X as Y, Y as Z, Z as X)
+	# X position of player vehicle
+	Global.TARGET_X = $LaneSystem3D/ArrowLeft.global_position.x
+	# X position of note/zombie spawn
+	Global.SPAWN_X = $LaneSystem3D.global_position.x
+	
+	# Z position of left lane note/zombie spawn
+	Global.SPAWN_Z[0] = $LaneSystem3D/ArrowLeft.global_position.z
+	
+	# Z position of middle lane note/zombie spawn
+	Global.SPAWN_Z[1] = $LaneSystem3D/ArrowUp.global_position.z
+	
+	# Z position of right lane note/zombie spawn
+	Global.SPAWN_Z[2] = $LaneSystem3D/ArrowRight.global_position.z
+	
+	Global.PLAYER_POS = $LaneSystem3D/Player
 	
 	# random seed set
 	randomize()
@@ -168,10 +177,13 @@ func _on_Conductor_beat(position):
 		if get_tree().change_scene_to_file("res://Scenes/End.tscn") != OK:
 			print ("Error changing scene to End")
 
+
 func NoteMissedReaction():
-	$NoteMissedLabel.text = "MISS"
+	$LaneSystem3D/NoteMissedLabel.text = "MISS"
 	await get_tree().create_timer(0.3).timeout
-	$NoteMissedLabel.text = ""
+	$LaneSystem3D/NoteMissedLabel.text = ""
+	
+	
 # spawns notes based on measure position
 func _on_Conductor_measure(position):
 	# if measure is 1
@@ -196,6 +208,7 @@ func _on_Conductor_measure(position):
 func _spawn_notes(to_spawn):
 	# keep track of total notes spawned
 	Global.total_notes_spawned += to_spawn
+	
 	# notes to spawn > 0
 	if to_spawn > 0:
 		# random lane (0, 1, 2)
@@ -256,23 +269,24 @@ func increment_score(scoreIncrementValue):
 	score += scoreIncrementValue * combo
 
 	# update score display
-	$Score.text = str(score)
+	$LaneSystem3D/Score.text = str(score)
 
 	# if combo > 0
 	if combo > 0:
 		# update combo text
-		$Combo.text = str(combo) + " combo!"
+		$LaneSystem3D/Combo.text = str(combo) + " combo!"
 
 		# if combo exceeds previous max combo
 		if combo > max_combo:
 			# set new max combo
 			max_combo = combo
+			
 		# emit combo change signal
 		Global.combo_changed.emit(combo)
 	# if combo <= 0
 	else:
 		# update combo text (none)
-		$Combo.text = ""
+		$LaneSystem3D/Combo.text = ""
 
 
 # will reset combo count
@@ -281,4 +295,4 @@ func reset_combo():
 	combo = 0
 
 	# update combo text (none)
-	$Combo.text = ""
+	$LaneSystem3D/Combo.text = ""

@@ -18,6 +18,15 @@ var okay = 0
 var missed = 0
 var grade = "NA"
 
+# difficulty
+# (0 = easy, 1 = medium, 2 = hard)
+var difficulty = 0
+
+# difficulty values
+var difficulty_values = [
+	2.0, 1.3, 0.9
+]
+
 # song dictionary (name to bpm)
 var song_list = {
 	"Curbi - What You Like [NCS Release].mp3" : 128,
@@ -40,16 +49,18 @@ var total_notes_spawned = 0
 # will contain main volume value
 var main_volume_value = 1.0
 
-# y position of arrow buttons on lane (the ones that are static)
-var TARGET_X = -4.5
+# 3D where notes are spawned on XZ plane (X as Y, Y as Z, Z as X)
+# x position of arrow buttons on lane (the ones that are static)
+var TARGET_X = 0.0
 
-# y position where note is spawned
-var SPAWN_Y = 0.51
+# x position where note is spawned
+var SPAWN_X = 0.0
 
-# x positions for note spawn
-var SPAWN_X = 4.5
+# z positions for note spawn
+var SPAWN_Z = [0.0, 0.0, 0.0]
 
-var SPAWN_Z = [-0.8, 0.0, 0.8]
+# XYZ position of player
+var PLAYER_POS = Vector3(0, 0, 0)
 
 # will set the score grade for end screen stats
 func set_score_grade(new):

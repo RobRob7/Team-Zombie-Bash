@@ -1,4 +1,4 @@
-extends Camera2D
+extends Camera3D
 
 # variables to control shake intensity and duration
 var shake_intensity = 0.0
@@ -6,18 +6,18 @@ var shake_duration = 0.0
 var shake_decay = 0.1  # How fast the shake should decay
 
 # original camera position
-var original_position: Vector2
+var original_transform: Transform3D
 
 # variable for hard limit shake combo score
-var shake_max_combo = 100
+var shake_max_combo = 50
 
 # variable to tune shake intensity
-var shake_max_tune = 0.02
+var shake_max_tune = 0.0004
 
 # called only once, when node enters scene
 func _ready():
 	# store the original camera position
-	original_position = position
+	original_transform = global_transform
 	
 	# connect combo_changed signal to start_camera_shake
 	Global.combo_changed.connect(start_camera_shake)
@@ -28,13 +28,17 @@ func _process(delta):
 	# check for shake duration set
 	if shake_duration > 0:
 		# apply random shake based on the intensity
-		var shake_offset = Vector2(
+		var shake_offset = Vector3(
+			randf_range(-shake_intensity, shake_intensity),
 			randf_range(-shake_intensity, shake_intensity),
 			randf_range(-shake_intensity, shake_intensity)
 		)
 		
-		# change position for camera
-		position = original_position + shake_offset
+		# adjust camera position while keeping rotation intact
+		global_transform = Transform3D(
+			original_transform.basis,
+			original_transform.origin + shake_offset
+		)
 
 		# reduce the shake intensity over time
 		shake_duration -= delta
@@ -43,7 +47,7 @@ func _process(delta):
 	# shake duration over
 	else:
 		# reset the position when the shake is done
-		position = original_position
+		global_transform = original_transform
 
 
 # function to trigger the camera shake based on current combo
@@ -51,7 +55,7 @@ func start_camera_shake(combo: float):
 	# if combo is less than shake_max_combo
 	if combo < shake_max_combo:
 		shake_intensity = combo * shake_max_tune
-	# if combo > 20, keep max shake_intensity
+	# if combo > shake_max_combo, keep max shake_intensity
 	else:
 		shake_intensity = shake_max_combo * shake_max_tune
 	

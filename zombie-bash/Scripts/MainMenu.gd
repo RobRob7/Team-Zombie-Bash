@@ -7,7 +7,7 @@ func _on_texture_button_pressed() -> void:
 # play button pressed (start game)
 func _on_play_button_pressed() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(Global.main_volume_value))
-	if get_tree().change_scene_to_file("res://Scenes/songselectionmenu.tscn") != OK:
+	if get_tree().change_scene_to_file("res://Scenes/SongSelectionMenu.tscn") != OK:
 		print ("Error changing scene to songselectmenu")
 
 # settings button pressed
