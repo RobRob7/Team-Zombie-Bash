@@ -45,7 +45,7 @@ func _physics_process(delta):
 		global_position.x += speed * delta
 
 		# Check if note has passed the target position
-		if global_position.x > Global.TARGET_X + 20:
+		if global_position.x < Global.TARGET_X - 1:
 			get_parent().NoteMissedReaction()
 			queue_free()  # Free resources
 			get_parent().reset_combo()  # Reset combo

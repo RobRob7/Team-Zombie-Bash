@@ -49,10 +49,10 @@ shadow_enabled = true
 
 [node name="NoteMissedLabel" type="Label" parent="."]
 modulate = Color(1, 0.101961, 0.0901961, 1)
-offset_left = 515.0
-offset_top = 315.0
-offset_right = 651.0
-offset_bottom = 353.0
+offset_left = 906.0
+offset_top = 362.0
+offset_right = 1042.0
+offset_bottom = 400.0
 theme_override_font_sizes/font_size = 25
 
 [node name="SongBPM" type="Label" parent="."]

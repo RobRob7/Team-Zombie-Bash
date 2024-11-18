@@ -250,7 +250,7 @@ func increment_score(scoreIncrementValue):
 		combo += 1
 	# reset combo to zero if scoreIncrementValue <= 0
 	else:
-		combo = 0
+		reset_combo()
 	
 	# score increment value is 3 (great hit)
 	if scoreIncrementValue == 3:
