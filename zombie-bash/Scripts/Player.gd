@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 # will run every frame
 func _physics_process(delta: float) -> void:
 	# move player model to respective lane

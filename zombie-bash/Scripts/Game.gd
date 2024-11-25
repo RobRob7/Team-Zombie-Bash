@@ -224,23 +224,23 @@ func _spawn_notes(to_spawn):
 		add_child(instance)
 
 	# notes to spawn > 1
-	if to_spawn > 1:
-		# while random number == lane number
-		while rand == lane:
-			# set random number to (0-2)
-			rand = randi() % 3
-		
-		# lane is set to random number
-		lane = rand
-
-		# create instance of note
-		instance = note.instantiate()
-
-		# initialize instanced note with lane
-		instance.initialize(lane)
-
-		# add this instance note as a child
-		add_child(instance)
+	#if to_spawn > 1:
+		## while random number == lane number
+		#while rand == lane:
+			## set random number to (0-2)
+			#rand = randi() % 3
+		#
+		## lane is set to random number
+		#lane = rand
+#
+		## create instance of note
+		#instance = note.instantiate()
+#
+		## initialize instanced note with lane
+		#instance.initialize(lane)
+#
+		## add this instance note as a child
+		#add_child(instance)
 	
 
 # will increment score based on performance
