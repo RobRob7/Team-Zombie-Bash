@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://wy3pmo8w0x52"]
 
-[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_luuaw"]
 [ext_resource type="Script" path="res://Scripts/HowToPlay.gd" id="1_sqvbv"]
+[ext_resource type="Texture2D" uid="uid://dg1fc4u0mj82n" path="res://Sprites/ui/menu/ZombieBashBackground.jpeg" id="3_73njk"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_if3ts"]
 
 [node name="HowToPlay" type="Control"]
@@ -20,13 +20,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -740.0
-offset_top = -511.0
-offset_right = 860.0
-offset_bottom = 689.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_luuaw")
+texture = ExtResource("3_73njk")
 expand_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -34,6 +30,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -32.0
+offset_right = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 

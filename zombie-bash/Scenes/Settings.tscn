@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bewjds73tyt4n"]
 
 [ext_resource type="Script" path="res://Scripts/Settings.gd" id="1_7a7su"]
-[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="1_uymrb"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="2_15k84"]
+[ext_resource type="Texture2D" uid="uid://dg1fc4u0mj82n" path="res://Sprites/ui/menu/ZombieBashBackground.jpeg" id="2_bp6yb"]
 [ext_resource type="Texture2D" uid="uid://biv3bkou2k7yx" path="res://Sprites/ui/slider_arrow1.png" id="3_qav1c"]
 [ext_resource type="Texture2D" uid="uid://bdp87wyiojxek" path="res://Sprites/ui/slider_arrow2.png" id="4_daohi"]
 
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_uymrb")
+texture = ExtResource("2_bp6yb")
 expand_mode = 1
 
 [node name="Main" type="Control" parent="."]
@@ -36,8 +36,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 88.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.8, 0.8)
 
 [node name="PanelContainer" type="PanelContainer" parent="Main/CenterContainer"]
 custom_minimum_size = Vector2(512, 256)

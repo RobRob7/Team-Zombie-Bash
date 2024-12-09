@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://by0l42cakh8m1"]
 
+[ext_resource type="Texture2D" uid="uid://dg1fc4u0mj82n" path="res://Sprites/ui/menu/ZombieBashBackground.jpeg" id="2_u3vmy"]
 [ext_resource type="Theme" uid="uid://cmjmq1njlioqx" path="res://Themes/new_theme.tres" id="3_o8lnd"]
 [ext_resource type="Script" path="res://Scripts/End.gd" id="6"]
-[ext_resource type="Texture2D" uid="uid://jovevpemrhyx" path="res://Sprites/ui/menu/black_bg.png" id="7_fe4hi"]
 
 [node name="End" type="Node2D"]
 script = ExtResource("6")
@@ -14,11 +14,9 @@ z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1200.0
-offset_bottom = 756.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_fe4hi")
+texture = ExtResource("2_u3vmy")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="End"]
