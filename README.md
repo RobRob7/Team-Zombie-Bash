@@ -4,7 +4,6 @@ Zombie Bash is a thrilling rhythm game where you drive a truck down a zombie-inf
 
 Link to game: https://robrob7.github.io/Team-Zombie-Bash/WebGame/index.html
 
-Project Name: Zombie Bash
 
 Team Members:
 Robert Armendariz (RobRob7)
