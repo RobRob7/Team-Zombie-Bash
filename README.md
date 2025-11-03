@@ -1,10 +1,9 @@
 # Zombie Bash
+<a href="https://robrob7.github.io/Team-Zombie-Bash/WebGame/index.html" target="_blank" rel="noopener noreferrer">Play Now</a>
 Zombie Bash is a thrilling rhythm game where you drive a truck down a zombie-infested highway, steering to hit zombies that spawn in sync with the beats of a song. The goal is to survive the musical chaos and avoid missing too many zombies to reach the end of the track with a high score!
 
 ![Alt text](captures/zombiebash1.png)
 ![Alt text](captures/zombiebash2.png)
-
-<a href="https://robrob7.github.io/Team-Zombie-Bash/WebGame/index.html" target="_blank" rel="noopener noreferrer">Play Now</a>
 
 Development Team:
 - Robert Armendariz [RobRob7]
