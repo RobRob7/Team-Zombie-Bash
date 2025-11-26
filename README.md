@@ -13,7 +13,6 @@ Development Team:
 - Aren Trombley [arentschool]
 
 <h2>
-<img src="https://lh4.googleusercontent.com/proxy/4_Zan5D7FOYcviw14ecpCpx8Tvq-ii1DoLIe15O2eDy9INbz2mhP-27Z3HCWby3EaQned-UF-1n4zFzbkSEFt9p7sOQUnsX-q_GyjI4C1-bSIVXTG0z0dugD" height="30" align="center">
 Requirements
 </h2>
 
@@ -23,7 +22,6 @@ Requirements
     - Import project with Godot using ```zombie-bash/project.godot```
 
 <h2>
-<img src="https://www.freeiconspng.com/uploads/yellow-christmas-star-png-18.png" height="30" align="center">
 Features
 </h2>
 
@@ -41,7 +39,6 @@ Features
     - Missing a zombie will reset multiplier to 1
 
 <h2>
-<img src="https://www.traptct.com/wp-content/uploads/2020/04/file-folder-png-1.png" height="30",align = "center">
 Project Structure
 </h2>
 
